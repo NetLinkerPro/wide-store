@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use NetLinker\FairQueue\Sections\Accesses\Requests\StoreAccess;
 use NetLinker\WideStore\Sections\Names\Repositories\NameRepository;
+use NetLinker\WideStore\Sections\Names\Requests\StoreName;
+use NetLinker\WideStore\Sections\Names\Requests\UpdateName;
 use NetLinker\WideStore\Sections\Names\Resources\Name;
 
 class NameController extends BaseController
@@ -59,10 +61,10 @@ class NameController extends BaseController
     /**
      * Request store
      *
-     * @param StoreAccess $request
+     * @param StoreName $request
      * @return array
      */
-    public function store(Request $request)
+    public function store(StoreName $request)
     {
         $this->names->create($request->all());
         return notify(__('wide-store::names.name_was_successfully_updated'));
@@ -71,11 +73,11 @@ class NameController extends BaseController
     /**
      * Update
      *
-     * @param Request $request
+     * @param UpdateName $request
      * @param $id
      * @return array
      */
-    public function update(Request $request, $id)
+    public function update(UpdateName $request, $id)
     {
         $this->names->update($request->all(), $id);
 

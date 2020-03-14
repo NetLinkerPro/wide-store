@@ -8,6 +8,8 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use NetLinker\WideStore\Sections\Stocks\Repositories\StockRepository;
+use NetLinker\WideStore\Sections\Stocks\Requests\StoreStock;
+use NetLinker\WideStore\Sections\Stocks\Requests\UpdateStock;
 use NetLinker\WideStore\Sections\Stocks\Resources\Stock;
 
 class StockController extends BaseController
@@ -59,10 +61,10 @@ class StockController extends BaseController
     /**
      * Request store
      *
-     * @param Request $request
+     * @param StoreStock $request
      * @return array
      */
-    public function store(Request $request)
+    public function store(StoreStock $request)
     {
         $this->stocks->create($request->all());
         return notify(__('wide-store::stocks.stock_was_successfully_updated'));
@@ -71,11 +73,11 @@ class StockController extends BaseController
     /**
      * Update
      *
-     * @param Request $request
+     * @param UpdateStock $request
      * @param $id
      * @return array
      */
-    public function update(Request $request, $id)
+    public function update(UpdateStock $request, $id)
     {
         $this->stocks->update($request->all(), $id);
 

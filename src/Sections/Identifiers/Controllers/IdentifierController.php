@@ -12,6 +12,8 @@ use NetLinker\WideStore\Sections\Identifiers\Repositories\IdentifierRepository;
 use NetLinker\WideStore\Sections\Identifiers\Requests\SaveRelatedAuctionIdentifier;
 use NetLinker\WideStore\Sections\Identifiers\Requests\SearchIdentifiersProductIdentifier;
 use NetLinker\WideStore\Sections\Identifiers\Requests\SelectIdentifierProductIdentifier;
+use NetLinker\WideStore\Sections\Identifiers\Requests\StoreIdentifier;
+use NetLinker\WideStore\Sections\Identifiers\Requests\UpdateIdentifier;
 use NetLinker\WideStore\Sections\Identifiers\Resources\Identifier;
 
 class IdentifierController extends BaseController
@@ -62,10 +64,10 @@ class IdentifierController extends BaseController
     /**
      * Request store
      *
-     * @param StoreAccess $request
+     * @param StoreIdentifier $request
      * @return array
      */
-    public function store(Request $request)
+    public function store(StoreIdentifier $request)
     {
         $this->identifiers->create($request->all());
         return notify(__('wide-store::identifiers.identifier_was_successfully_updated'));
@@ -74,11 +76,11 @@ class IdentifierController extends BaseController
     /**
      * Update
      *
-     * @param Request $request
+     * @param UpdateIdentifier $request
      * @param $id
      * @return array
      */
-    public function update(Request $request, $id)
+    public function update(UpdateIdentifier $request, $id)
     {
         $this->identifiers->update($request->all(), $id);
 

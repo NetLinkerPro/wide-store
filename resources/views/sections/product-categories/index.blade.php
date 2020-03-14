@@ -24,18 +24,7 @@
                         <template slot="toggler">
                             <span>{{ __('wide-store::product-categories.manage') }}</span>
                         </template>
-                        <cm-link href="{{route('wide-store.identifiers.index')}}">   {{ __('wide-store::general.manage_identifiers') }}</cm-link>
-                        <cm-link href="{{route('wide-store.products.index')}}">   {{ __('wide-store::general.manage_products') }}</cm-link>
-                        <cm-link href="{{route('wide-store.names.index')}}">   {{ __('wide-store::general.manage_names') }}</cm-link>
-                        <cm-link href="{{route('wide-store.urls.index')}}">   {{ __('wide-store::general.manage_urls') }}</cm-link>
-                        <cm-link href="{{route('wide-store.prices.index')}}">   {{ __('wide-store::general.manage_prices') }}</cm-link>
-                        <cm-link href="{{route('wide-store.taxes.index')}}">   {{ __('wide-store::general.manage_taxes') }}</cm-link>
-                        <cm-link href="{{route('wide-store.stocks.index')}}">   {{ __('wide-store::general.manage_stocks') }}</cm-link>
-                        <cm-link href="{{route('wide-store.categories.index')}}">   {{ __('wide-store::general.manage_categories') }}</cm-link>
-{{--                        <cm-link href="{{route('wide-store.product_categories.index')}}">   {{ __('wide-store::general.manage_product_categories') }}</cm-link>--}}
-                        <cm-link href="{{route('wide-store.images.index')}}">   {{ __('wide-store::general.manage_images') }}</cm-link>
-                        <cm-link href="{{route('wide-store.descriptions.index')}}">   {{ __('wide-store::general.manage_descriptions') }}</cm-link>
-                        <cm-link href="{{route('wide-store.attributes.index')}}">   {{ __('wide-store::general.manage_attributes') }}</cm-link>
+                        @include('wide-store::sections.partials.menu-manage')
                     </context-menu>
                 </div>
 
@@ -44,13 +33,13 @@
     </div>
     <div class="section">
         @table([
-            'name' => 'product-categories_table',
+            'name' => 'product_categories_table',
             'row_url'=> '',
             'scope_api_url' => route('wide-store.product_categories.scope'),
             'scope_api_params' => []
         ])
         <template slot="header">
-            <h3>{{__('wide-store::product-categories.product-category_list') }}</h3>
+            <h3>{{__('wide-store::product-categories.product_category_list') }}</h3>
         </template>
         <tb-column name="no_field_product_uuid" label="{{__('wide-store::general.product') }}">
             <template slot-scope="col">
@@ -96,7 +85,7 @@
 
     {{--Add product-category--}}
     <modal-window name="form" class="modal_formbuilder" title="{{ __('wide-store::product-categories.addition_product_category') }}">
-        <form-builder name="add-product-category" url="{{ route('wide-store.product_categories.store') }}" @sended="AWES.emit('content::product-categories_table:update')"
+        <form-builder name="add-product-category" url="{{ route('wide-store.product_categories.store') }}" @sended="AWES.emit('content::product_categories_table:update')"
                       send-text="{{ __('wide-store::general.add') }}"
                       cancel-text="{{ __('wide-store::general.cancel') }}">
             <div class="section" v-if="AWES._store.state.forms['add-product-category']">
@@ -114,7 +103,7 @@
 
     {{--Edit product-category--}}
     <modal-window name="edit-product-category" class="modal_formbuilder" title="{{ __('wide-store::product-categories.edition_product_category') }}">
-        <form-builder method="PATCH" url="{{ route('wide-store.product_categories.index') }}/{id}" store-data="editProductCategory" @sended="AWES.emit('content::product-categories_table:update')"
+        <form-builder method="PATCH" url="{{ route('wide-store.product_categories.index') }}/{id}" store-data="editProductCategory" @sended="AWES.emit('content::product_categories_table:update')"
                       send-text="{{ __('wide-store::general.save') }}"
                       cancel-text="{{ __('wide-store::general.cancel') }}">
 
@@ -126,8 +115,8 @@
     </modal-window>
 
     {{--Delete product-category--}}
-    <modal-window name="delete-product-category" class="modal_formbuilder" title="{{ __('wide-store::product-categories.are_you_sure_delete_product-category') }}">
-        <form-builder name="delete-product-category" method="DELETE" url="{{ route('wide-store.product_categories.index') }}/{id}" store-data="deleteProductCategory" @sended="AWES.emit('content::product-categories_table:update')"
+    <modal-window name="delete-product-category" class="modal_formbuilder" title="{{ __('wide-store::product-categories.are_you_sure_delete_product_category') }}">
+        <form-builder name="delete-product-category" method="DELETE" url="{{ route('wide-store.product_categories.index') }}/{id}" store-data="deleteProductCategory" @sended="AWES.emit('content::product_categories_table:update')"
                       send-text="{{ __('wide-store::general.yes') }}"
                       cancel-text="{{ __('wide-store::general.no') }}"
                       disabled-dialog>

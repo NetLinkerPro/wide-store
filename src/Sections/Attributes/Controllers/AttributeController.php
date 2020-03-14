@@ -8,6 +8,8 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use NetLinker\WideStore\Sections\Attributes\Repositories\AttributeRepository;
+use NetLinker\WideStore\Sections\Attributes\Requests\StoreAttribute;
+use NetLinker\WideStore\Sections\Attributes\Requests\UpdateAttribute;
 use NetLinker\WideStore\Sections\Attributes\Resources\Attribute;
 
 class AttributeController extends BaseController
@@ -59,10 +61,10 @@ class AttributeController extends BaseController
     /**
      * Request store
      *
-     * @param Request $request
+     * @param StoreAttribute $request
      * @return array
      */
-    public function store(Request $request)
+    public function store(StoreAttribute $request)
     {
         $this->attributes->create($request->all());
         return notify(__('wide-store::attributes.attribute_was_successfully_updated'));
@@ -75,7 +77,7 @@ class AttributeController extends BaseController
      * @param $id
      * @return array
      */
-    public function update(Request $request, $id)
+    public function update(UpdateAttribute $request, $id)
     {
         $this->attributes->update($request->all(), $id);
 

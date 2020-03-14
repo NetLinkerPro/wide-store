@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use NetLinker\FairQueue\Sections\Accesses\Requests\StoreAccess;
 use NetLinker\WideStore\Sections\Taxes\Repositories\TaxRepository;
+use NetLinker\WideStore\Sections\Taxes\Requests\StoreTax;
+use NetLinker\WideStore\Sections\Taxes\Requests\UpdateTax;
 use NetLinker\WideStore\Sections\Taxes\Resources\Tax;
 
 class TaxController extends BaseController
@@ -59,10 +61,10 @@ class TaxController extends BaseController
     /**
      * Request store
      *
-     * @param StoreAccess $request
+     * @param StoreTax $request
      * @return array
      */
-    public function store(Request $request)
+    public function store(StoreTax $request)
     {
         $this->taxes->create($request->all());
         return notify(__('wide-store::taxes.tax_was_successfully_updated'));
@@ -71,11 +73,11 @@ class TaxController extends BaseController
     /**
      * Update
      *
-     * @param Request $request
+     * @param UpdateTax $request
      * @param $id
      * @return array
      */
-    public function update(Request $request, $id)
+    public function update(UpdateTax $request, $id)
     {
         $this->taxes->update($request->all(), $id);
 

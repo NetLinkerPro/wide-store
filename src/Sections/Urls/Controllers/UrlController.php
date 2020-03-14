@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use NetLinker\FairQueue\Sections\Accesses\Requests\StoreAccess;
 use NetLinker\WideStore\Sections\Urls\Repositories\UrlRepository;
+use NetLinker\WideStore\Sections\Urls\Requests\StoreUrl;
+use NetLinker\WideStore\Sections\Urls\Requests\UpdateUrl;
 use NetLinker\WideStore\Sections\Urls\Resources\Url;
 
 class UrlController extends BaseController
@@ -59,10 +61,10 @@ class UrlController extends BaseController
     /**
      * Request store
      *
-     * @param StoreAccess $request
+     * @param StoreUrl $request
      * @return array
      */
-    public function store(Request $request)
+    public function store(StoreUrl $request)
     {
         $this->urls->create($request->all());
         return notify(__('wide-store::urls.url_was_successfully_updated'));
@@ -71,11 +73,11 @@ class UrlController extends BaseController
     /**
      * Update
      *
-     * @param Request $request
+     * @param UpdateUrl $request
      * @param $id
      * @return array
      */
-    public function update(Request $request, $id)
+    public function update(UpdateUrl $request, $id)
     {
         $this->urls->update($request->all(), $id);
 

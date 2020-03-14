@@ -26,6 +26,8 @@ class CreateWideStoreNamesTable extends Migration
             $table->string('type')->index();
             $table->softDeletes();
             $table->timestamps();
+
+            $table->unique(['product_uuid','deliverer', 'lang', 'type'], 'wsn_product_uuid_deliverer_lang_type');
         });
     }
 

@@ -8,6 +8,8 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use NetLinker\WideStore\Sections\Prices\Repositories\PriceRepository;
+use NetLinker\WideStore\Sections\Prices\Requests\StorePrice;
+use NetLinker\WideStore\Sections\Prices\Requests\UpdatePrice;
 use NetLinker\WideStore\Sections\Prices\Resources\Price;
 
 class PriceController extends BaseController
@@ -59,10 +61,10 @@ class PriceController extends BaseController
     /**
      * Request store
      *
-     * @param Request $request
+     * @param StorePrice $request
      * @return array
      */
-    public function store(Request $request)
+    public function store(StorePrice $request)
     {
         $this->prices->create($request->all());
         return notify(__('wide-store::prices.price_was_successfully_updated'));
@@ -71,11 +73,11 @@ class PriceController extends BaseController
     /**
      * Update
      *
-     * @param Request $request
+     * @param UpdatePrice $request
      * @param $id
      * @return array
      */
-    public function update(Request $request, $id)
+    public function update(UpdatePrice $request, $id)
     {
         $this->prices->update($request->all(), $id);
 

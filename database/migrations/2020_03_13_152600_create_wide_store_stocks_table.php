@@ -29,6 +29,8 @@ class CreateWideStoreStocksTable extends Migration
             $table->string('type')->index();
             $table->softDeletes();
             $table->timestamps();
+
+            $table->unique(['product_uuid','deliverer', 'department','type'], 'wss_product_uuid_deliverer_department_type');
         });
     }
 

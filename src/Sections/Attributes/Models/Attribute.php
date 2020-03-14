@@ -23,7 +23,9 @@ class Attribute extends Model
      *
      * @var array
      */
-    protected $casts = [];
+    protected $casts = [
+        'order' => 'integer',
+        ];
 
     /**
      * The attributes that are mass assignable.

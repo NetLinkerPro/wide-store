@@ -28,6 +28,8 @@ class CreateWideStoreCategoriesTable extends Migration
             $table->string('type')->index();
             $table->softDeletes();
             $table->timestamps();
+
+            $table->unique(['parent_uuid','deliverer', 'name','lang', 'type'], 'wsc_parent_uuid_deliverer_name_lang_type');
         });
     }
 

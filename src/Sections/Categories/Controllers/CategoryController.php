@@ -8,6 +8,8 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use NetLinker\WideStore\Sections\Categories\Repositories\CategoryRepository;
+use NetLinker\WideStore\Sections\Categories\Requests\StoreCategory;
+use NetLinker\WideStore\Sections\Categories\Requests\UpdateCategory;
 use NetLinker\WideStore\Sections\Categories\Resources\Category;
 
 class CategoryController extends BaseController
@@ -59,10 +61,10 @@ class CategoryController extends BaseController
     /**
      * Request store
      *
-     * @param Request $request
+     * @param StoreCategory $request
      * @return array
      */
-    public function store(Request $request)
+    public function store(StoreCategory $request)
     {
         $this->categories->create($request->all());
         return notify(__('wide-store::categories.category_was_successfully_updated'));
@@ -71,11 +73,11 @@ class CategoryController extends BaseController
     /**
      * Update
      *
-     * @param Request $request
+     * @param UpdateCategory $request
      * @param $id
      * @return array
      */
-    public function update(Request $request, $id)
+    public function update(UpdateCategory $request, $id)
     {
         $this->categories->update($request->all(), $id);
 

@@ -25,6 +25,8 @@ class CreateWideStoreProductsTable extends Migration
             $table->string('name');
             $table->softDeletes();
             $table->timestamps();
+
+            $table->unique(['deliverer', 'identifier'], 'wsp_deliverer_identifier');
         });
     }
 

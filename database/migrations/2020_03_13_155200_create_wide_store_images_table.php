@@ -25,7 +25,7 @@ class CreateWideStoreImagesTable extends Migration
 
             $table->string('url_source')->nullable();
             $table->string('path')->nullable();
-            $table->string('disk')->nullable();
+            $table->string('disk')->index()->nullable();
             $table->string('url_target')->nullable();
             $table->integer('order')->default(20);
             $table->boolean('main')->default(false);
@@ -35,6 +35,8 @@ class CreateWideStoreImagesTable extends Migration
             $table->string('type')->index();
             $table->softDeletes();
             $table->timestamps();
+
+            $table->unique(['product_uuid','deliverer', 'identifier', 'lang', 'type'], 'wsi_product_uuid_deliverer_identifier_lang_type');
         });
     }
 

@@ -8,6 +8,8 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use NetLinker\WideStore\Sections\Descriptions\Repositories\DescriptionRepository;
+use NetLinker\WideStore\Sections\Descriptions\Requests\StoreDescription;
+use NetLinker\WideStore\Sections\Descriptions\Requests\UpdateDescription;
 use NetLinker\WideStore\Sections\Descriptions\Resources\Description;
 
 class DescriptionController extends BaseController
@@ -59,10 +61,10 @@ class DescriptionController extends BaseController
     /**
      * Request store
      *
-     * @param Request $request
+     * @param StoreDescription $request
      * @return array
      */
-    public function store(Request $request)
+    public function store(StoreDescription $request)
     {
         $this->descriptions->create($request->all());
         return notify(__('wide-store::descriptions.description_was_successfully_updated'));
@@ -71,11 +73,11 @@ class DescriptionController extends BaseController
     /**
      * Update
      *
-     * @param Request $request
+     * @param UpdateDescription $request
      * @param $id
      * @return array
      */
-    public function update(Request $request, $id)
+    public function update(UpdateDescription $request, $id)
     {
         $this->descriptions->update($request->all(), $id);
 

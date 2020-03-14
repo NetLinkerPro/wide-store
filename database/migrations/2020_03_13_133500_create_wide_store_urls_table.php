@@ -25,6 +25,8 @@ class CreateWideStoreUrlsTable extends Migration
             $table->string('type')->index();
             $table->softDeletes();
             $table->timestamps();
+
+            $table->unique(['product_uuid','deliverer', 'type'], 'wsu_product_uuid_deliverer_type');
         });
     }
 

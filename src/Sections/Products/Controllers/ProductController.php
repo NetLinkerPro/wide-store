@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use NetLinker\FairQueue\Sections\Accesses\Requests\StoreAccess;
 use NetLinker\WideStore\Sections\Products\Repositories\ProductRepository;
+use NetLinker\WideStore\Sections\Products\Requests\StoreProduct;
+use NetLinker\WideStore\Sections\Products\Requests\UpdateProduct;
 use NetLinker\WideStore\Sections\Products\Resources\Product;
 
 class ProductController extends BaseController
@@ -59,10 +61,10 @@ class ProductController extends BaseController
     /**
      * Request store
      *
-     * @param StoreAccess $request
+     * @param StoreProduct $request
      * @return array
      */
-    public function store(Request $request)
+    public function store(StoreProduct $request)
     {
         $this->products->create($request->all());
         return notify(__('wide-store::products.product_was_successfully_updated'));
@@ -71,11 +73,11 @@ class ProductController extends BaseController
     /**
      * Update
      *
-     * @param Request $request
+     * @param UpdateProduct $request
      * @param $id
      * @return array
      */
-    public function update(Request $request, $id)
+    public function update(UpdateProduct $request, $id)
     {
         $this->products->update($request->all(), $id);
 

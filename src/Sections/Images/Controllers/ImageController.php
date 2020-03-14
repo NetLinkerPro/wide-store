@@ -8,6 +8,8 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use NetLinker\WideStore\Sections\Images\Repositories\ImageRepository;
+use NetLinker\WideStore\Sections\Images\Requests\StoreImage;
+use NetLinker\WideStore\Sections\Images\Requests\UpdateImage;
 use NetLinker\WideStore\Sections\Images\Resources\Image;
 
 class ImageController extends BaseController
@@ -59,10 +61,10 @@ class ImageController extends BaseController
     /**
      * Request store
      *
-     * @param Request $request
+     * @param StoreImage $request
      * @return array
      */
-    public function store(Request $request)
+    public function store(StoreImage $request)
     {
         $this->images->create($request->all());
         return notify(__('wide-store::images.image_was_successfully_updated'));
@@ -71,11 +73,11 @@ class ImageController extends BaseController
     /**
      * Update
      *
-     * @param Request $request
+     * @param UpdateImage $request
      * @param $id
      * @return array
      */
-    public function update(Request $request, $id)
+    public function update(UpdateImage $request, $id)
     {
         $this->images->update($request->all(), $id);
 

@@ -30,6 +30,8 @@ class CreateWideStoreAttributesTable extends Migration
             $table->string('type')->index();
             $table->softDeletes();
             $table->timestamps();
+
+            $table->unique(['product_uuid','deliverer', 'name', 'lang','type'], 'wsa_product_uuid_deliverer_name_lang_type');
         });
     }
 

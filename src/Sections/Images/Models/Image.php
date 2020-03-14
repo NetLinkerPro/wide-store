@@ -24,6 +24,7 @@ class Image extends Model
      * @var array
      */
     protected $casts = [
+        'order' => 'integer',
         'main' => 'boolean',
         'active' => 'boolean',
     ];

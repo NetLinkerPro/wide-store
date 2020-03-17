@@ -39,7 +39,7 @@ class Setting extends Model
 
     public $orderable = [];
 
-    protected $encryptable = [];
+    protected $encryptable = ['value'];
 
     /**
      * Binds creating/saving events to create UUIDs (and also prevent them from being overwritten).

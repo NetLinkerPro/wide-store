@@ -231,33 +231,6 @@ Route::domain(config('wide-store.domain'))
             Route::delete('{id?}', config('wide-store.controllers.shops') . '@destroy')->name('destroy');
         });
 
-        # Formats
-        Route::prefix('formats')->as('formats.')->group(function () {
-            Route::get('/', config('wide-store.controllers.formats') . '@index')->name('index');
-            Route::get('scope', config('wide-store.controllers.formats') . '@scope')->name('scope');
-            Route::post('store', config('wide-store.controllers.formats') . '@store')->name('store');
-            Route::patch('{id?}', config('wide-store.controllers.formats') . '@update')->name('update');
-            Route::delete('{id?}', config('wide-store.controllers.formats') . '@destroy')->name('destroy');
-        });
-
-        # Integrations
-        Route::prefix('integrations')->as('integrations.')->group(function () {
-            Route::get('/', config('wide-store.controllers.integrations') . '@index')->name('index');
-            Route::get('scope', config('wide-store.controllers.integrations') . '@scope')->name('scope');
-            Route::post('store', config('wide-store.controllers.integrations') . '@store')->name('store');
-            Route::patch('{id?}', config('wide-store.controllers.integrations') . '@update')->name('update');
-            Route::delete('{id?}', config('wide-store.controllers.integrations') . '@destroy')->name('destroy');
-        });
-
-        # Integration schedulers
-        Route::prefix('integration-schedulers')->as('integration_schedulers.')->group(function () {
-            Route::get('/', config('wide-store.controllers.integration_schedulers') . '@index')->name('index');
-            Route::get('scope', config('wide-store.controllers.integration_schedulers') . '@scope')->name('scope');
-            Route::post('store', config('wide-store.controllers.integration_schedulers') . '@store')->name('store');
-            Route::patch('{id?}', config('wide-store.controllers.integration_schedulers') . '@update')->name('update');
-            Route::delete('{id?}', config('wide-store.controllers.integration_schedulers') . '@destroy')->name('destroy');
-        });
-
         # Deliverers
         Route::prefix('deliverers')->as('deliverers.')->group(function () {
             Route::get('scope', config('wide-store.controllers.deliverers') . '@scope')->name('scope');

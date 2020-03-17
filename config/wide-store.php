@@ -112,12 +112,6 @@ return [
 
         'shops' => 'NetLinker\WideStore\Sections\Shops\Controllers\ShopController',
 
-        'formats' => 'NetLinker\WideStore\Sections\Formats\Controllers\FormatController',
-
-        'integrations' => 'NetLinker\WideStore\Sections\Integrations\Controllers\IntegrationController',
-
-        'integration_schedulers' => 'NetLinker\WideStore\Sections\IntegrationSchedulers\Controllers\IntegrationSchedulerController',
-
         'deliverers' => 'NetLinker\WideStore\Sections\Deliverers\Controllers\DelivererController',
 
         'settings' => 'NetLinker\WideStore\Sections\Settings\Controllers\SettingController',
@@ -132,15 +126,6 @@ return [
     |
     */
 
-    'queues' => [
-
-        'add_new_products' => 'wide_store_add_new_products',
-
-        'update_exist_products' => 'wide_store_update_exist_products',
-
-        'create_or_update_my_prices_stocks' => 'wide_store_create_or_update_my_prices_stocks',
-
-        'create_or_update_shops' => 'wide_store_create_or_update_shops',
-    ],
+    'queues' => [],
 
 ];

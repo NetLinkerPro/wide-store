@@ -1,1 +1,0 @@
-<cm-link href="{{route('wide-store.formats.index')}}">   {{ __('wide-store::general.formats') }}</cm-link>

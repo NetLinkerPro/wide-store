@@ -1,2 +1,0 @@
-<cm-link href="{{route('wide-store.integrations.index')}}">   {{ __('wide-store::general.integrations') }}</cm-link>
-<cm-link href="{{route('wide-store.integration_schedulers.index')}}">   {{ __('wide-store::general.manage_integration_schedulers') }}</cm-link>

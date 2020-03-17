@@ -28,7 +28,7 @@ class CreateWideStoreShopProductCategoriesTable extends Migration
             $table->softDeletes();
             $table->timestamps();
 
-            $table->unique(['shop_uuid','product_uuid','category_uuid', 'deliverer'], 'wsspc_shop_product_category_deliverer');
+            $table->unique(['deleted_at','shop_uuid','product_uuid','category_uuid', 'deliverer'], 'wsspc_shop_product_category_deliverer');
         });
     }
 

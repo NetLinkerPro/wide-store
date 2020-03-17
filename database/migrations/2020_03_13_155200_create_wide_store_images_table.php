@@ -36,7 +36,7 @@ class CreateWideStoreImagesTable extends Migration
             $table->softDeletes();
             $table->timestamps();
 
-            $table->unique(['product_uuid','deliverer', 'identifier', 'lang', 'type'], 'wsi_product_uuid_deliverer_identifier_lang_type');
+            $table->unique(['deleted_at','product_uuid','deliverer', 'identifier', 'lang', 'type'], 'wsi_product_uuid_deliverer_identifier_lang_type');
         });
     }
 

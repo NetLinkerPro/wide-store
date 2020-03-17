@@ -27,7 +27,7 @@ class CreateWideStorePricesTable extends Migration
             $table->softDeletes();
             $table->timestamps();
 
-            $table->unique(['product_uuid','deliverer', 'currency', 'type'], 'wsp_product_uuid_deliverer_currency_type');
+            $table->unique(['deleted_at','product_uuid','deliverer', 'currency', 'type'], 'wsp_product_uuid_deliverer_currency_type');
         });
     }
 

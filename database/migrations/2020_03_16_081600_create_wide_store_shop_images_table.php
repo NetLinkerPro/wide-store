@@ -32,7 +32,7 @@ class CreateWideStoreShopImagesTable extends Migration
             $table->softDeletes();
             $table->timestamps();
 
-            $table->unique(['shop_uuid' ,'product_uuid','deliverer', 'identifier'], 'wssi_shop_product_deliverer_identifier');
+            $table->unique(['deleted_at','shop_uuid' ,'product_uuid','deliverer', 'identifier'], 'wssi_shop_product_deliverer_identifier');
         });
     }
 

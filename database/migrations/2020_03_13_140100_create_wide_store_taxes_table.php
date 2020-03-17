@@ -25,7 +25,7 @@ class CreateWideStoreTaxesTable extends Migration
             $table->softDeletes();
             $table->timestamps();
 
-            $table->unique(['product_uuid', 'country', 'tax'], 'wst_product_uuid_country_type');
+            $table->unique(['deleted_at','product_uuid', 'country', 'tax'], 'wst_product_uuid_country_type');
         });
     }
 

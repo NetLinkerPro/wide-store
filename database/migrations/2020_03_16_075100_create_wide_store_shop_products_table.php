@@ -31,7 +31,7 @@ class CreateWideStoreShopProductsTable extends Migration
             $table->softDeletes();
             $table->timestamps();
 
-            $table->unique(['shop_uuid', 'identifier'], 'wssp_shop_identifier');
+            $table->unique(['deleted_at','shop_uuid', 'identifier'], 'wssp_shop_identifier');
         });
     }
 

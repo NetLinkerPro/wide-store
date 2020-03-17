@@ -27,7 +27,7 @@ class CreateWideStoreIntegrationSchedulersTable extends Migration
             $table->softDeletes();
             $table->timestamps();
 
-            $table->unique(['integration_uuid','cron'], 'wsischedulers_integration_cron');
+            $table->unique(['deleted_at','integration_uuid','cron'], 'wsischedulers_integration_cron');
         });
     }
 

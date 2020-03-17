@@ -29,7 +29,7 @@ class CreateWideStoreCategoriesTable extends Migration
             $table->softDeletes();
             $table->timestamps();
 
-            $table->unique(['parent_uuid','deliverer', 'name','lang', 'type'], 'wsc_parent_uuid_deliverer_name_lang_type');
+            $table->unique(['deleted_at','parent_uuid','deliverer', 'name','lang', 'type'], 'wsc_parent_uuid_deliverer_name_lang_type');
         });
     }
 

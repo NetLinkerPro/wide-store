@@ -27,21 +27,6 @@ class SettingRepository extends BaseRepository
         return $this;
     }
 
-    public function create(array $attributes)
-    {
-        $attributes['value'] = json_encode($attributes['value'], JSON_UNESCAPED_UNICODE);
-        return parent::create($attributes);
-    }
-
-    public function update(array $values, $id, $attribute = "id")
-    {
-        if ($attribute === 'value'){
-            $values['value'] = json_encode($values['value'], JSON_UNESCAPED_UNICODE);
-        }
-        return parent::update($values, $id, $attribute);
-    }
-
-
     /**
      * Delete a record by id.
      *

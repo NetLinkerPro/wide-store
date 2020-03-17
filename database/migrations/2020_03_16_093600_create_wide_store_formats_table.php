@@ -30,7 +30,7 @@ class CreateWideStoreFormatsTable extends Migration
             $table->softDeletes();
             $table->timestamps();
 
-            $table->unique(['name'], 'wsformats_name');
+            $table->unique(['deleted_at','name'], 'wsformats_name');
         });
     }
 

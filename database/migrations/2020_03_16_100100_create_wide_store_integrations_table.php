@@ -27,7 +27,7 @@ class CreateWideStoreIntegrationsTable extends Migration
             $table->softDeletes();
             $table->timestamps();
 
-            $table->unique(['deliverer_configuration_uuid'], 'wsintegrations_deliverer_configuration');
+            $table->unique(['deleted_at','deliverer_configuration_uuid'], 'wsintegrations_deliverer_configuration');
         });
     }
 

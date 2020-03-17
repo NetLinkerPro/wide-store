@@ -27,7 +27,7 @@ class CreateWideStoreIdentifiersTable extends Migration
             $table->softDeletes();
             $table->timestamps();
 
-            $table->unique(['product_uuid', 'deliverer', 'identifier', 'type'], 'wsi_product_uuid_deliverer_identifier_type');
+            $table->unique(['deleted_at','product_uuid', 'deliverer', 'identifier', 'type'], 'wsi_product_uuid_deliverer_identifier_type');
         });
     }
 

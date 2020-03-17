@@ -29,7 +29,7 @@ class CreateWideStoreMyPricesTable extends Migration
             $table->softDeletes();
             $table->timestamps();
 
-            $table->unique(['integration_uuid','product_uuid','deliverer', 'currency', 'type'], 'wsmp_integration_product_deliverer_currency_type');
+            $table->unique(['deleted_at','integration_uuid','product_uuid','deliverer', 'currency', 'type'], 'wsmp_integration_product_deliverer_currency_type');
         });
     }
 

@@ -25,7 +25,7 @@ class CreateWideStoreSettingsTable extends Migration
             $table->string('key')->index();
             $table->mediumText('value')->nullable();
 
-            $table->unique(['deliverer', 'key'], 'wssettings_deliverer_key');
+            $table->unique(['deleted_at','deleted_at','deliverer', 'key'], 'wssettings_deliverer_key');
 
             $table->softDeletes();
             $table->timestamps();

@@ -81,7 +81,6 @@
                 <fb-input name="name" label="{{ __('wide-store::general.name') }}"></fb-input>
                 <fb-input name="key" label="{{ __('wide-store::settings.key') }}"></fb-input>
                 <fb-textarea name="value" label="{{ __('wide-store::settings.value') }}"></fb-textarea>
-                <fb-editor name="editor" :options="{'visual': 'false'}"></fb-editor>
             </div>
         </form-builder>
     </modal-window>

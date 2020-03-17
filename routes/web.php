@@ -140,6 +140,123 @@ Route::domain(config('wide-store.domain'))
             Route::patch('{id?}', config('wide-store.controllers.attributes') . '@update')->name('update');
             Route::delete('{id?}', config('wide-store.controllers.attributes') . '@destroy')->name('destroy');
         });
+
+        # Shop products
+        Route::prefix('shop-products')->as('shop_products.')->group(function () {
+            Route::get('/', config('wide-store.controllers.shop_products') . '@index')->name('index');
+            Route::get('scope', config('wide-store.controllers.shop_products') . '@scope')->name('scope');
+            Route::post('store', config('wide-store.controllers.shop_products') . '@store')->name('store');
+            Route::patch('{id?}', config('wide-store.controllers.shop_products') . '@update')->name('update');
+            Route::delete('{id?}', config('wide-store.controllers.shop_products') . '@destroy')->name('destroy');
+        });
+
+        # Shop stocks
+        Route::prefix('shop-stocks')->as('shop_stocks.')->group(function () {
+            Route::get('/', config('wide-store.controllers.shop_stocks') . '@index')->name('index');
+            Route::get('scope', config('wide-store.controllers.shop_stocks') . '@scope')->name('scope');
+            Route::post('store', config('wide-store.controllers.shop_stocks') . '@store')->name('store');
+            Route::patch('{id?}', config('wide-store.controllers.shop_stocks') . '@update')->name('update');
+            Route::delete('{id?}', config('wide-store.controllers.shop_stocks') . '@destroy')->name('destroy');
+        });
+
+        # Shop categories
+        Route::prefix('shop-categories')->as('shop_categories.')->group(function () {
+            Route::get('/', config('wide-store.controllers.shop_categories') . '@index')->name('index');
+            Route::get('scope', config('wide-store.controllers.shop_categories') . '@scope')->name('scope');
+            Route::post('store', config('wide-store.controllers.shop_categories') . '@store')->name('store');
+            Route::patch('{id?}', config('wide-store.controllers.shop_categories') . '@update')->name('update');
+            Route::delete('{id?}', config('wide-store.controllers.shop_categories') . '@destroy')->name('destroy');
+        });
+
+        # Shop product categories
+        Route::prefix('shop-product-categories')->as('shop_product_categories.')->group(function () {
+            Route::get('/', config('wide-store.controllers.shop_product_categories') . '@index')->name('index');
+            Route::get('scope', config('wide-store.controllers.shop_product_categories') . '@scope')->name('scope');
+            Route::post('store', config('wide-store.controllers.shop_product_categories') . '@store')->name('store');
+            Route::patch('{id?}', config('wide-store.controllers.shop_product_categories') . '@update')->name('update');
+            Route::delete('{id?}', config('wide-store.controllers.shop_product_categories') . '@destroy')->name('destroy');
+        });
+
+        # Shop images
+        Route::prefix('shop-images')->as('shop_images.')->group(function () {
+            Route::get('/', config('wide-store.controllers.shop_images') . '@index')->name('index');
+            Route::get('scope', config('wide-store.controllers.shop_images') . '@scope')->name('scope');
+            Route::post('store', config('wide-store.controllers.shop_images') . '@store')->name('store');
+            Route::patch('{id?}', config('wide-store.controllers.shop_images') . '@update')->name('update');
+            Route::delete('{id?}', config('wide-store.controllers.shop_images') . '@destroy')->name('destroy');
+        });
+
+        # Shop descriptions
+        Route::prefix('shop-descriptions')->as('shop_descriptions.')->group(function () {
+            Route::get('/', config('wide-store.controllers.shop_descriptions') . '@index')->name('index');
+            Route::get('scope', config('wide-store.controllers.shop_descriptions') . '@scope')->name('scope');
+            Route::post('store', config('wide-store.controllers.shop_descriptions') . '@store')->name('store');
+            Route::patch('{id?}', config('wide-store.controllers.shop_descriptions') . '@update')->name('update');
+            Route::delete('{id?}', config('wide-store.controllers.shop_descriptions') . '@destroy')->name('destroy');
+        });
+
+        # Shop attributes
+        Route::prefix('shop-attributes')->as('shop_attributes.')->group(function () {
+            Route::get('/', config('wide-store.controllers.shop_attributes') . '@index')->name('index');
+            Route::get('scope', config('wide-store.controllers.shop_attributes') . '@scope')->name('scope');
+            Route::post('store', config('wide-store.controllers.shop_attributes') . '@store')->name('store');
+            Route::patch('{id?}', config('wide-store.controllers.shop_attributes') . '@update')->name('update');
+            Route::delete('{id?}', config('wide-store.controllers.shop_attributes') . '@destroy')->name('destroy');
+        });
+
+        # My prices
+        Route::prefix('my-prices')->as('my_prices.')->group(function () {
+            Route::get('/', config('wide-store.controllers.my_prices') . '@index')->name('index');
+            Route::get('scope', config('wide-store.controllers.my_prices') . '@scope')->name('scope');
+            Route::post('store', config('wide-store.controllers.my_prices') . '@store')->name('store');
+            Route::patch('{id?}', config('wide-store.controllers.my_prices') . '@update')->name('update');
+            Route::delete('{id?}', config('wide-store.controllers.my_prices') . '@destroy')->name('destroy');
+        });
+
+        # My stocks
+        Route::prefix('my-stocks')->as('my_stocks.')->group(function () {
+            Route::get('/', config('wide-store.controllers.my_stocks') . '@index')->name('index');
+            Route::get('scope', config('wide-store.controllers.my_stocks') . '@scope')->name('scope');
+            Route::post('store', config('wide-store.controllers.my_stocks') . '@store')->name('store');
+            Route::patch('{id?}', config('wide-store.controllers.my_stocks') . '@update')->name('update');
+            Route::delete('{id?}', config('wide-store.controllers.my_stocks') . '@destroy')->name('destroy');
+        });
+
+        # Shops
+        Route::prefix('shops')->as('shops.')->group(function () {
+            Route::get('/', config('wide-store.controllers.shops') . '@index')->name('index');
+            Route::get('scope', config('wide-store.controllers.shops') . '@scope')->name('scope');
+            Route::post('store', config('wide-store.controllers.shops') . '@store')->name('store');
+            Route::patch('{id?}', config('wide-store.controllers.shops') . '@update')->name('update');
+            Route::delete('{id?}', config('wide-store.controllers.shops') . '@destroy')->name('destroy');
+        });
+
+        # Formats
+        Route::prefix('formats')->as('formats.')->group(function () {
+            Route::get('/', config('wide-store.controllers.formats') . '@index')->name('index');
+            Route::get('scope', config('wide-store.controllers.formats') . '@scope')->name('scope');
+            Route::post('store', config('wide-store.controllers.formats') . '@store')->name('store');
+            Route::patch('{id?}', config('wide-store.controllers.formats') . '@update')->name('update');
+            Route::delete('{id?}', config('wide-store.controllers.formats') . '@destroy')->name('destroy');
+        });
+
+        # Integrations
+        Route::prefix('integrations')->as('integrations.')->group(function () {
+            Route::get('/', config('wide-store.controllers.integrations') . '@index')->name('index');
+            Route::get('scope', config('wide-store.controllers.integrations') . '@scope')->name('scope');
+            Route::post('store', config('wide-store.controllers.integrations') . '@store')->name('store');
+            Route::patch('{id?}', config('wide-store.controllers.integrations') . '@update')->name('update');
+            Route::delete('{id?}', config('wide-store.controllers.integrations') . '@destroy')->name('destroy');
+        });
+
+        # Integration schedulers
+        Route::prefix('integration-schedulers')->as('integration_schedulers.')->group(function () {
+            Route::get('/', config('wide-store.controllers.integration_schedulers') . '@index')->name('index');
+            Route::get('scope', config('wide-store.controllers.integration_schedulers') . '@scope')->name('scope');
+            Route::post('store', config('wide-store.controllers.integration_schedulers') . '@store')->name('store');
+            Route::patch('{id?}', config('wide-store.controllers.integration_schedulers') . '@update')->name('update');
+            Route::delete('{id?}', config('wide-store.controllers.integration_schedulers') . '@destroy')->name('destroy');
+        });
 });
 
 

@@ -26,7 +26,7 @@ class UpdateCategory extends FormRequest
     {
         return [
             'parent_uuid' => 'string|max:36',
-            'deliverer' => 'required|string|max:24',
+            'deliverer' => 'required|string|max:255',
             'name' => ['required', 'string', 'max:255', Rule::unique('wide_store_categories')->where(function ($query) {
                 return $query->where('parent_uuid', $this->parent_uuid)
                     ->where('deliverer', $this->deliverer)

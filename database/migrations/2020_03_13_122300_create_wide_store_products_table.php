@@ -20,7 +20,7 @@ class CreateWideStoreProductsTable extends Migration
             $table->bigIncrements('id');
             $table->string('uuid', 36)->index();
             $table->string('category_uuid', 36)->index();
-            $table->string('deliverer',24)->index();
+            $table->string('deliverer')->index();
             $table->string('identifier')->index();
             $table->string('name');
             $table->softDeletes();

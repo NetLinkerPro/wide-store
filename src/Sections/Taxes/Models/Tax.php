@@ -23,7 +23,9 @@ class Tax extends Model
      *
      * @var array
      */
-    protected $casts = [];
+    protected $casts = [
+        'tax' => 'integer',
+    ];
 
     /**
      * The attributes that are mass assignable.

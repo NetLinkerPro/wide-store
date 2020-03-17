@@ -26,7 +26,7 @@ class UpdateImage extends FormRequest
     {
         return [
             'product_uuid' => 'required|string|max:36',
-            'deliverer' => 'required|string|max:24',
+            'deliverer' => 'required|string|max:255',
             'identifier' => ['required', 'string', 'max:255', Rule::unique('wide_store_identifiers')->where(function ($query) {
                 return $query->where('product_uuid', $this->product_uuid)
                     ->where('deliverer', $this->deliverer)

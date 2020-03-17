@@ -19,15 +19,7 @@
 
             </div>
             <div class="cell-inline">
-                <div class="filter__rlink">
-                    <context-menu button-class="filter__slink" right>
-                        <template slot="toggler">
-                            <span>{{ __('wide-store::categories.manage') }}</span>
-                        </template>
-                        @include('wide-store::sections.partials.menu-manage')
-                    </context-menu>
-                </div>
-
+                @include('wide-store::sections.partials.menu-manage')
             </div>
         </div>
     </div>
@@ -56,16 +48,6 @@
         <tb-column name="name" label="{{__('wide-store::general.name') }}">
             <template slot-scope="col">
                 @{{ col.data.name }}
-            </template>
-        </tb-column>
-        <tb-column name="lang" label="{{__('wide-store::general.language') }}">
-            <template slot-scope="col">
-                @{{ col.data.lang }}
-            </template>
-        </tb-column>
-        <tb-column name="type" label="{{__('wide-store::general.type') }}">
-            <template slot-scope="col">
-                @{{ col.data.type }}
             </template>
         </tb-column>
 
@@ -102,8 +84,6 @@
 
                 <fb-input name="deliverer" label="{{ __('wide-store::general.deliverer') }}"></fb-input>
                 <fb-input name="name" label="{{ __('wide-store::general.name') }}"></fb-input>
-                <fb-input name="lang" label="{{ __('wide-store::general.language') }}"></fb-input>
-                <fb-input name="type" label="{{ __('wide-store::general.type') }}"></fb-input>
             </div>
         </form-builder>
     </modal-window>
@@ -114,11 +94,9 @@
                       send-text="{{ __('wide-store::general.save') }}"
                       cancel-text="{{ __('wide-store::general.cancel') }}">
 
-            <fb-input type="hidden" name="parent_uuidstocks"></fb-input>
+            <fb-input type="hidden" name="parent_uuid"></fb-input>
             <fb-input name="deliverer" label="{{ __('wide-store::general.deliverer') }}"></fb-input>
             <fb-input name="name" label="{{ __('wide-store::general.name') }}"></fb-input>
-            <fb-input name="lang" label="{{ __('wide-store::general.language') }}"></fb-input>
-            <fb-input name="type" label="{{ __('wide-store::general.type') }}"></fb-input>
         </form-builder>
     </modal-window>
 

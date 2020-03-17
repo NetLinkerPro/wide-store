@@ -53,7 +53,7 @@ class WatchBrowser extends BrowserTestCase
         parent::refreshApplication();
 
         if (Schema::hasTable('users_test')) {
-            Auth::login(User::all()->last());
+            Auth::login(User::all()->first());
 
             Event::listen('NetLinker\LeadAllegro\Sections\Accounts\Events\TokenBundleDownloaded*', function ($eventName, array $data) {
 
@@ -79,7 +79,7 @@ class WatchBrowser extends BrowserTestCase
     {
         $owner = factory(Owner::class)->create();
         factory(User::class)->create(['owner_uuid' => $owner->uuid,]);
-        Auth::login(User::all()->last());
+        Auth::login(User::all()->first());
 
         $this->browse(function (Browser $browser) {
             TestHelper::maximizeBrowserToScreen($browser);

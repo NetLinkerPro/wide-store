@@ -66,6 +66,8 @@ return [
 
         'dashboard' => 'NetLinker\WideStore\Sections\Dashboard\Controllers\DashboardController',
 
+        'introductions'=> 'NetLinker\WideStore\Sections\Introductions\Controllers\IntroductionController',
+
         'identifiers' => 'NetLinker\WideStore\Sections\Identifiers\Controllers\IdentifierController',
 
         'products' => 'NetLinker\WideStore\Sections\Products\Controllers\ProductController',
@@ -90,7 +92,31 @@ return [
 
         'attributes' => 'NetLinker\WideStore\Sections\Attributes\Controllers\AttributeController',
 
-        'introductions'=> 'NetLinker\WideStore\Sections\Introductions\Controllers\IntroductionController',
+        'shop_products' => 'NetLinker\WideStore\Sections\ShopProducts\Controllers\ShopProductController',
+
+        'shop_stocks' => 'NetLinker\WideStore\Sections\ShopStocks\Controllers\ShopStockController',
+
+        'shop_categories' => 'NetLinker\WideStore\Sections\ShopCategories\Controllers\ShopCategoryController',
+
+        'shop_product_categories' => 'NetLinker\WideStore\Sections\ShopProductCategories\Controllers\ShopProductCategoryController',
+
+        'shop_images' => 'NetLinker\WideStore\Sections\ShopImages\Controllers\ShopImageController',
+
+        'shop_descriptions' => 'NetLinker\WideStore\Sections\ShopDescriptions\Controllers\ShopDescriptionController',
+
+        'shop_attributes' => 'NetLinker\WideStore\Sections\ShopAttributes\Controllers\ShopAttributeController',
+
+        'my_prices' => 'NetLinker\WideStore\Sections\MyPrices\Controllers\MyPriceController',
+
+        'my_stocks' => 'NetLinker\WideStore\Sections\MyStocks\Controllers\MyStockController',
+
+        'shops' => 'NetLinker\WideStore\Sections\Shops\Controllers\ShopController',
+
+        'formats' => 'NetLinker\WideStore\Sections\Formats\Controllers\FormatController',
+
+        'integrations' => 'NetLinker\WideStore\Sections\Integrations\Controllers\IntegrationController',
+
+        'integration_schedulers' => 'NetLinker\WideStore\Sections\IntegrationSchedulers\Controllers\IntegrationSchedulerController',
 
     ],
 
@@ -103,6 +129,15 @@ return [
     |
     */
 
-    'queues' => [],
+    'queues' => [
+
+        'add_new_products' => 'wide_store_add_new_products',
+
+        'update_exist_products' => 'wide_store_update_exist_products',
+
+        'create_or_update_my_prices_stocks' => 'wide_store_create_or_update_my_prices_stocks',
+
+        'create_or_update_shops' => 'wide_store_create_or_update_shops',
+    ],
 
 ];

@@ -25,8 +25,8 @@ class UpdateProduct extends FormRequest
     public function rules()
     {
         return [
-            'category_uuid' => 'string|max:36',
-            'deliverer' => 'required|string|max:24',
+            'category_uuid' => 'required|string|max:36',
+            'deliverer' => 'required|string|max:255',
             'identifier' => ['required', 'string', 'max:255', Rule::unique('wide_store_products')->where(function ($query) {
                 return $query->where('deliverer', $this->deliverer)
                     ->where('identifier', $this->identifier);

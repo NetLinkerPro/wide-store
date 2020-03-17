@@ -83,7 +83,7 @@ class WatchBrowser extends BrowserTestCase
 
         $this->browse(function (Browser $browser) {
             TestHelper::maximizeBrowserToScreen($browser);
-            $browser->visit('wide-store/identifiers');
+            $browser->visit('wide-store/settings');
             TestHelper::browserWatch($browser, false);
         });
 

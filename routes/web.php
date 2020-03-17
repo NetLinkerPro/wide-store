@@ -257,6 +257,20 @@ Route::domain(config('wide-store.domain'))
             Route::patch('{id?}', config('wide-store.controllers.integration_schedulers') . '@update')->name('update');
             Route::delete('{id?}', config('wide-store.controllers.integration_schedulers') . '@destroy')->name('destroy');
         });
+
+        # Deliverers
+        Route::prefix('deliverers')->as('deliverers.')->group(function () {
+            Route::get('scope', config('wide-store.controllers.deliverers') . '@scope')->name('scope');
+        });
+
+        # Settings
+        Route::prefix('settings')->as('settings.')->group(function () {
+            Route::get('/', config('wide-store.controllers.settings') . '@index')->name('index');
+            Route::get('scope', config('wide-store.controllers.settings') . '@scope')->name('scope');
+            Route::post('store', config('wide-store.controllers.settings') . '@store')->name('store');
+            Route::patch('{id?}', config('wide-store.controllers.settings') . '@update')->name('update');
+            Route::delete('{id?}', config('wide-store.controllers.settings') . '@destroy')->name('destroy');
+        });
 });
 
 

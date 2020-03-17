@@ -1,0 +1,1 @@
+<cm-link href="{{route('wide-store.settings.index')}}">   {{ __('wide-store::settings.settings') }}</cm-link>

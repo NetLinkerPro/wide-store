@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 use Ramsey\Uuid\Uuid;
 
-class CreateWideStoreIntegrationsTable extends Migration
+class CreateWideStoreSettingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,19 +15,20 @@ class CreateWideStoreIntegrationsTable extends Migration
     public function up()
     {
 
-        Schema::create('wide_store_integrations', function (Blueprint $table) {
+        Schema::create('wide_store_settings', function (Blueprint $table) {
 
             $table->bigIncrements('id');
             $table->string('uuid', 36)->index();
-            $table->string('owner_uuid', 36)->index();
 
             $table->string('deliverer')->index();
-            $table->string('deliverer_configuration_uuid', 36)->index();
+            $table->string('name');
+            $table->string('key')->index();
+            $table->mediumText('value')->nullable();
+
+            $table->unique(['deliverer', 'key'], 'wssettings_deliverer_key');
 
             $table->softDeletes();
             $table->timestamps();
-
-            $table->unique(['deliverer_configuration_uuid'], 'wsintegrations_deliverer_configuration');
         });
     }
 
@@ -38,6 +39,6 @@ class CreateWideStoreIntegrationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('wide_store_integrations');
+        Schema::dropIfExists('wide_store_settings');
     }
 }

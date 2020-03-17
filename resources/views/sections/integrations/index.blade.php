@@ -71,7 +71,11 @@
                       send-text="{{ __('wide-store::general.add') }}"
                       cancel-text="{{ __('wide-store::general.cancel') }}">
             <div class="section" v-if="AWES._store.state.forms['add-integration']">
-                <fb-input name="deliverer" label="{{ __('wide-store::general.deliverer') }}"></fb-input>
+
+                <fb-select name="deliverer" label="{{ __('wide-store::general.deliverer') }}"
+                           url="{{route('wide-store.deliverers.scope')}}" auto-fetch="" taggable
+                           options-value="value" options-name="name" :multiple="false" placeholder-text=" "></fb-select>
+
                 <fb-input name="deliverer_configuration_uuid" label="{{ __('wide-store::integrations.deliverer_configuration') }}"></fb-input>
             </div>
         </form-builder>

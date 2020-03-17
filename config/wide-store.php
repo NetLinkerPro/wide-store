@@ -118,6 +118,9 @@ return [
 
         'integration_schedulers' => 'NetLinker\WideStore\Sections\IntegrationSchedulers\Controllers\IntegrationSchedulerController',
 
+        'deliverers' => 'NetLinker\WideStore\Sections\Deliverers\Controllers\DelivererController',
+
+        'settings' => 'NetLinker\WideStore\Sections\Settings\Controllers\SettingController',
     ],
 
     /*

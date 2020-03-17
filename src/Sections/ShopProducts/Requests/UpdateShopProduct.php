@@ -30,7 +30,8 @@ class UpdateShopProduct extends FormRequest
             'deliverer' => 'required|string|max:255',
             'identifier' => ['required', 'string', 'max:255', Rule::unique('wide_store_shop_products')->where(function ($query) {
                 return $query->where('shop_uuid', $this->shop_uuid)
-                    ->where('identifier', $this->identifier);
+                    ->where('identifier', $this->identifier)
+->whereNull('deleted_at');
             })->ignore($this->id)],
             'name' => 'required|string|max:255',
             'price' => 'required|regex:/^\d+(\.\d{1,5})?$/',

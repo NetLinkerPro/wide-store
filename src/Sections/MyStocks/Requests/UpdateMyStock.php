@@ -35,7 +35,8 @@ class UpdateMyStock extends FormRequest
                     ->where('product_uuid', $this->product_uuid)
                     ->where('deliverer', $this->deliverer)
                     ->where('department', $this->department)
-                    ->where('type', $this->type);
+                    ->where('type', $this->type)
+->whereNull('deleted_at');
             })->ignore($this->id)],
             'type' => 'required|string|max:255',
         ];

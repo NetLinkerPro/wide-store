@@ -33,7 +33,8 @@ class UpdateMyPrice extends FormRequest
                     ->where('product_uuid', $this->product_uuid)
                     ->where('deliverer', $this->deliverer)
                     ->where('currency', $this->currency)
-                    ->where('type', $this->type);
+                    ->where('type', $this->type)
+->whereNull('deleted_at');
             })->ignore($this->id)],
             'type' => 'required|string|max:255',
             'price' => 'required|regex:/^\d+(\.\d{1,5})?$/',

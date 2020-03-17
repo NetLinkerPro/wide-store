@@ -32,7 +32,8 @@ class UpdateName extends FormRequest
                 return $query->where('product_uuid', $this->product_uuid)
                     ->where('deliverer', $this->deliverer)
                     ->where('lang', $this->lang)
-                    ->where('type', $this->type);
+                    ->where('type', $this->type)
+->whereNull('deleted_at');
             })->ignore($this->id)],
             'type' => 'required|string|max:255',
         ];

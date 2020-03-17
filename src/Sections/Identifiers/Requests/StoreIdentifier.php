@@ -31,7 +31,8 @@ class StoreIdentifier extends FormRequest
                 return $query->where('product_uuid', $this->product_uuid)
                     ->where('deliverer', $this->deliverer)
                     ->where('identifier', $this->identifier)
-                    ->where('type', $this->type);
+                    ->where('type', $this->type)
+                    ->whereNull('deleted_at');
             })],
             'type' => 'required|string|max:255',
         ];

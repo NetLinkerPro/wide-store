@@ -32,7 +32,8 @@ class UpdateShopImage extends FormRequest
                 return $query->where('shop_uuid', $this->shop_uuid)
                     ->where('product_uuid', $this->product_uuid)
                     ->where('deliverer', $this->deliverer)
-                    ->where('identifier', $this->department);
+                    ->where('identifier', $this->department)
+->whereNull('deleted_at');
             })->ignore($this->id)],
             'url_target' => 'string|max:255',
             'order' => 'integer',

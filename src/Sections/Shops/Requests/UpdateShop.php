@@ -27,7 +27,8 @@ class UpdateShop extends FormRequest
         return [
             'format_uuid' => ['required', 'string', 'max:48', Rule::unique('wide_store_shops')->where(function ($query) {
                 return $query->where('format_uuid', $this->format_uuid)
-                    ->where('integration_uuid', $this->integration_uuid);
+                    ->where('integration_uuid', $this->integration_uuid)
+->whereNull('deleted_at');
             })->ignore($this->id)],
             'integration_uuid' => 'required|string|max:36',
             'name' => 'string|max:255',

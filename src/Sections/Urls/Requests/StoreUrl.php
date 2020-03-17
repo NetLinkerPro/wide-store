@@ -31,7 +31,8 @@ class StoreUrl extends FormRequest
             'type' => ['required', 'string', 'max:255', Rule::unique('wide_store_urls')->where(function ($query) {
                 return $query->where('product_uuid', $this->product_uuid)
                     ->where('deliverer', $this->deliverer)
-                    ->where('type', $this->type);
+                    ->where('type', $this->type)
+                    ->whereNull('deleted_at');
             })],
         ];
     }

@@ -31,7 +31,8 @@ class StoreProductCategory extends FormRequest
                 return $query->where('product_uuid', $this->product_uuid)
                     ->where('category_uuid', $this->category_uuid)
                     ->where('deliverer', $this->deliverer)
-                    ->where('type', $this->type);
+                    ->where('type', $this->type)
+                    ->whereNull('deleted_at');
             })],
             'type' => 'required|string|max:255',
         ];

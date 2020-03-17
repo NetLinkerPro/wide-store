@@ -35,7 +35,8 @@ class StoreShopStock extends FormRequest
                 return $query->where('shop_uuid', $this->shop_uuid)
                     ->where('product_uuid', $this->product_uuid)
                     ->where('deliverer', $this->deliverer)
-                    ->where('department', $this->department);
+                    ->where('department', $this->department)
+                    ->whereNull('deleted_at');
             })],
         ];
     }

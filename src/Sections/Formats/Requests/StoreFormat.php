@@ -26,7 +26,8 @@ class StoreFormat extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255', Rule::unique('wide_store_formats')->where(function ($query) {
-                return $query->where('name', $this->name);
+                return $query->where('name', $this->name)
+                    ->whereNull('deleted_at');
             })],
             'description' => 'nullable|string',
             'configuration' => 'nullable|string',

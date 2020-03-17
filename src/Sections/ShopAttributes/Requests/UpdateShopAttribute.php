@@ -32,7 +32,8 @@ class UpdateShopAttribute extends FormRequest
                 return $query->where('shop_uuid', $this->shop_uuid)
                     ->where('product_uuid', $this->product_uuid)
                     ->where('deliverer', $this->deliverer)
-                    ->where('name', $this->name);
+                    ->where('name', $this->name)
+->whereNull('deleted_at');
             })->ignore($this->id)],
             'value' => 'string',
             'order' => 'integer',

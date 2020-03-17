@@ -27,7 +27,8 @@ class StoreIntegration extends FormRequest
         return [
             'deliverer_configuration_uuid' => 'required|string|max:36',
             'deliverer' => ['required', 'string', 'max:255', Rule::unique('wide_store_integrations')->where(function ($query) {
-                return $query->where('deliverer_configuration_uuid', $this->deliverer_configuration_uuid);
+                return $query->where('deliverer_configuration_uuid', $this->deliverer_configuration_uuid)
+                    ->whereNull('deleted_at');
             })],
         ];
     }

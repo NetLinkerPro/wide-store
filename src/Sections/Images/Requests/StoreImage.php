@@ -32,7 +32,8 @@ class StoreImage extends FormRequest
                     ->where('deliverer', $this->deliverer)
                     ->where('identifier', $this->identifier)
                     ->where('lang', $this->lang)
-                    ->where('type', $this->type);
+                    ->where('type', $this->type)
+                    ->whereNull('deleted_at');
             })],
 
             'url_source' => 'string|max:255',

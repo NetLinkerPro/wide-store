@@ -33,7 +33,8 @@ class StoreStock extends FormRequest
                 return $query->where('product_uuid', $this->product_uuid)
                     ->where('deliverer', $this->deliverer)
                     ->where('department', $this->department)
-                    ->where('type', $this->type);
+                    ->where('type', $this->type)
+                    ->whereNull('deleted_at');
             })],
             'type' => 'required|string|max:255',
         ];

@@ -32,7 +32,8 @@ class StoreAttribute extends FormRequest
                     ->where('deliverer', $this->deliverer)
                     ->where('name', $this->name)
                     ->where('lang', $this->lang)
-                    ->where('type', $this->type);
+                    ->where('type', $this->type)
+                    ->whereNull('deleted_at');
             })],
 
             'value' => 'required|string',

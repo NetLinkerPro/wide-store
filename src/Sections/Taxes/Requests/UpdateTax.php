@@ -29,7 +29,8 @@ class UpdateTax extends FormRequest
             'country' => ['required', 'string', 'max:48', Rule::unique('wide_store_taxes')->where(function ($query) {
                 return $query->where('product_uuid', $this->product_uuid)
                     ->where('country', $this->country)
-                    ->where('tax', $this->tax);
+                    ->where('tax', $this->tax)
+->whereNull('deleted_at');
             })->ignore($this->id)],
             'tax' => 'required|integer',
         ];

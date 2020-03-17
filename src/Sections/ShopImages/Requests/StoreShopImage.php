@@ -32,7 +32,8 @@ class StoreShopImage extends FormRequest
                 return $query->where('shop_uuid', $this->shop_uuid)
                     ->where('product_uuid', $this->product_uuid)
                     ->where('deliverer', $this->deliverer)
-                    ->where('identifier', $this->department);
+                    ->where('identifier', $this->department)
+                    ->whereNull('deleted_at');
             })],
             'url_target' => 'string|max:255',
             'order' => 'integer',

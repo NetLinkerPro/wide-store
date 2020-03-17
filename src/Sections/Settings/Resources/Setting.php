@@ -27,7 +27,7 @@ class Setting extends JsonResource
             'deliverer' => $this->deliverer,
             'name' => $this->name,
             'key' => $this->key,
-            'value' => $this->value,
+            'value' => json_encode($this->value, JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT),
         ];
     }
 }

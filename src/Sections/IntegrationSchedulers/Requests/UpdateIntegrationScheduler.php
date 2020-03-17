@@ -28,7 +28,8 @@ class UpdateIntegrationScheduler extends FormRequest
             'integration_uuid' => 'required|string|max:36',
             'cron' => ['required', 'string', 'max:255', Rule::unique('wide_store_integration_schedulers')->where(function ($query) {
                 return $query->where('integration_uuid', $this->integration_uuid)
-                    ->where('cron', $this->cron);
+                    ->where('cron', $this->cron)
+->whereNull('deleted_at');
             })->ignore($this->id)],
         ];
     }

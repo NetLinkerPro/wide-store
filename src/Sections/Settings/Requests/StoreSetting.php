@@ -27,7 +27,8 @@ class StoreSetting extends FormRequest
         return [
             'deliverer' => ['required', 'string', 'max:255', Rule::unique('wide_store_settings')->where(function ($query) {
                 return $query->where('deliverer', $this->deliverer)
-                    ->where('key', $this->key);
+                    ->where('key', $this->key)
+                    ->whereNull('deleted_at');
             })],
             'name' => 'required|string|max:255',
             'key' => 'required|string|max:255',

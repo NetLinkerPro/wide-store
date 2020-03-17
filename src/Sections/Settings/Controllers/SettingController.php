@@ -66,6 +66,8 @@ class SettingController extends BaseController
      */
     public function store(StoreSetting $request)
     {
+        $request->merge(['value'=>json_decode($request->value,true, 512, JSON_UNESCAPED_UNICODE) ?? []]);
+
         $this->shopProducts->create($request->all());
         return notify(__('wide-store::settings.setting_was_successfully_updated'));
     }
@@ -79,6 +81,9 @@ class SettingController extends BaseController
      */
     public function update(UpdateSetting $request, $id)
     {
+
+        $request->merge(['value'=>json_decode($request->value,true, 512, JSON_UNESCAPED_UNICODE) ?? []]);
+
         $this->shopProducts->update($request->all(), $id);
 
         return notify(

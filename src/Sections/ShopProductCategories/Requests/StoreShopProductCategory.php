@@ -32,7 +32,8 @@ class StoreShopProductCategory extends FormRequest
                 return $query->where('shop_uuid', $this->parent_uuid)
                     ->where('product_uuid', $this->shop_uuid)
                     ->where('category_uuid', $this->deliverer)
-                    ->where('deliverer', $this->name);
+                    ->where('deliverer', $this->name)
+                    ->whereNull('deleted_at');
             })],
         ];
     }

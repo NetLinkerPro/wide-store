@@ -33,7 +33,8 @@ class UpdateShopCategory extends FormRequest
                 return $query->where('parent_uuid', $this->parent_uuid)
                     ->where('shop_uuid', $this->shop_uuid)
                     ->where('deliverer', $this->deliverer)
-                    ->where('name', $this->name);
+                    ->where('name', $this->name)
+->whereNull('deleted_at');
             })->ignore($this->id)],
         ];
     }

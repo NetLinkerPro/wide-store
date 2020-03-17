@@ -32,7 +32,8 @@ class StoreDescription extends FormRequest
                 return $query->where('product_uuid', $this->product_uuid)
                     ->where('deliverer', $this->deliverer)
                     ->where('lang', $this->lang)
-                    ->where('type', $this->type);
+                    ->where('type', $this->type)
+                    ->whereNull('deleted_at');
             })],
             'type' => 'required|string|max:255',
         ];

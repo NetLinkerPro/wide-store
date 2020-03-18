@@ -4,9 +4,13 @@ namespace NetLinker\WideStore\Sections\ShopProductCategories\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use NetLinker\WideStore\Ownerable;
 
 class UpdateShopProductCategory extends FormRequest
 {
+
+    use Ownerable;
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -33,6 +37,7 @@ class UpdateShopProductCategory extends FormRequest
                     ->where('product_uuid', $this->shop_uuid)
                     ->where('category_uuid', $this->deliverer)
                     ->where('deliverer', $this->name)
+                    ->where('owner_uuid', $this->getAuthOwnerUuid())
 ->whereNull('deleted_at');
             })->ignore($this->id)],
         ];

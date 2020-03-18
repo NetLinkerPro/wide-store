@@ -20,7 +20,7 @@ class CreateWideStoreMyPricesTable extends Migration
             $table->bigIncrements('id');
             $table->string('uuid', 36)->index();
             $table->string('owner_uuid', 36)->index();
-            $table->string('integration_uuid', 36)->index();
+            $table->string('configuration_uuid', 36)->index();
             $table->string('product_uuid', 36)->index();
             $table->string('deliverer')->index();
             $table->string('currency', 48)->index();
@@ -29,7 +29,7 @@ class CreateWideStoreMyPricesTable extends Migration
             $table->softDeletes();
             $table->timestamps();
 
-            $table->unique(['deleted_at','integration_uuid','product_uuid','deliverer', 'currency', 'type'], 'wsmp_integration_product_deliverer_currency_type');
+            $table->unique(['deleted_at','configuration_uuid','product_uuid','deliverer', 'currency', 'type'], 'wsmp_integration_product_deliverer_currency_type');
         });
     }
 

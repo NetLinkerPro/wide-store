@@ -4,9 +4,13 @@ namespace NetLinker\WideStore\Sections\ShopImages\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use NetLinker\WideStore\Ownerable;
 
 class StoreShopImage extends FormRequest
 {
+
+    use Ownerable;
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -33,6 +37,7 @@ class StoreShopImage extends FormRequest
                     ->where('product_uuid', $this->product_uuid)
                     ->where('deliverer', $this->deliverer)
                     ->where('identifier', $this->department)
+                    ->where('owner_uuid', $this->getAuthOwnerUuid())
                     ->whereNull('deleted_at');
             })],
             'url_target' => 'string|max:255',

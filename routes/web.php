@@ -249,6 +249,11 @@ Route::domain(config('wide-store.domain'))
         Route::prefix('formatters')->as('formatters.')->group(function () {
             Route::get('scope', config('wide-store.controllers.formatters') . '@scope')->name('scope');
         });
+
+        # Configurations
+        Route::prefix('configurations')->as('configurations.')->group(function () {
+            Route::get('scope', config('wide-store.controllers.configurations') . '@scope')->name('scope');
+        });
 });
 
 

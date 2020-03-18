@@ -4,9 +4,13 @@ namespace NetLinker\WideStore\Sections\ShopProducts\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use NetLinker\WideStore\Ownerable;
 
 class UpdateShopProduct extends FormRequest
 {
+
+    use Ownerable;
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -31,6 +35,7 @@ class UpdateShopProduct extends FormRequest
             'identifier' => ['required', 'string', 'max:255', Rule::unique('wide_store_shop_products')->where(function ($query) {
                 return $query->where('shop_uuid', $this->shop_uuid)
                     ->where('identifier', $this->identifier)
+                    ->where('owner_uuid', $this->getAuthOwnerUuid())
 ->whereNull('deleted_at');
             })->ignore($this->id)],
             'name' => 'required|string|max:255',

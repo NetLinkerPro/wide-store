@@ -1,7 +1,7 @@
 <?php
 
 
-namespace NetLinker\WideStore\Sections\Formatters\Services;
+namespace NetLinker\WideStore\Sections\Configurations\Services;
 
 
 use Illuminate\Http\Request;
@@ -20,7 +20,7 @@ class Deliverer
      */
     public function getClassResource(string $deliverer)
     {
-        $classResource = sprintf('NetLinker\Deliverer%1$s\Sections\Formatters\Resources\Formatter', Str::ucfirst($deliverer));
+        $classResource = sprintf('NetLinker\Deliverer%1$s\Sections\Configurations\Resources\Configuration', Str::ucfirst($deliverer));
 
         if (!class_exists($classResource)){
             throw new WideStoreException('Not found class ' . $classResource);
@@ -51,7 +51,7 @@ class Deliverer
      */
     public function getClassRepository($module)
     {
-        $classRepository = sprintf('NetLinker\Deliverer%1$s\Sections\Formatters\Repositories\FormatterRepository', Str::ucfirst($module));
+        $classRepository = sprintf('NetLinker\Deliverer%1$s\Sections\Configurations\Repositories\ConfigurationRepository', Str::ucfirst($module));
 
         if (!class_exists($classRepository)){
             throw new WideStoreException('Not found class ' . $classRepository);

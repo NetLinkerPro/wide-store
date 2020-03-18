@@ -33,9 +33,9 @@
         <template slot="header">
             <h3>{{__('wide-store::my-stocks.stock_list') }}</h3>
         </template>
-        <tb-column name="no_field_integration_uuid" label="{{__('wide-store::my-stocks.integration') }}">
+        <tb-column name="no_field_configuration_uuid" label="{{__('wide-store::my-prices.configuration') }}">
             <template slot-scope="col">
-                @{{ col.data.integration.name }}
+                @{{ col.data.configuration.name }}
             </template>
         </tb-column>
         <tb-column name="no_field_product_uuid" label="{{__('wide-store::general.product') }}">
@@ -95,21 +95,35 @@
         <form-builder name="add-my-stock" url="{{ route('wide-store.my_stocks.store') }}" @sended="AWES.emit('content::my_stocks_table:update')"
                       send-text="{{ __('wide-store::general.add') }}"
                       cancel-text="{{ __('wide-store::general.cancel') }}">
+
             <div class="section" v-if="AWES._store.state.forms['add-my-stock']">
-                <fb-select name="integration_uuid" label="{{ __('wide-store::my-stocks.integration') }}"
-                           url="{{route('wide-store.integrations.scope')}}?q=%s"
-                           options-value="uuid" options-name="name" :multiple="false" placeholder-text=" "></fb-select>
 
-                <fb-select name="product_uuid" label="{{ __('wide-store::general.product') }}"
-                           url="{{route('wide-store.products.scope')}}?q=%s"
-                           options-value="uuid" options-name="name" :multiple="false" placeholder-text=" "></fb-select>
+                <fb-select name="deliverer" label="{{ __('wide-store::general.deliverer') }}"
+                           url="{{route('wide-store.deliverers.scope')}}?q=%s" auto-fetch=""
+                           :disabled="!!AWES._store.state.forms['add-my-stock'].fields.deliverer"
+                           options-value="value" options-name="name" :multiple="false" placeholder-text=" "></fb-select>
 
-                <fb-input name="deliverer" label="{{ __('wide-store::general.deliverer') }}"></fb-input>
-                <fb-input type="number" name="stock" label="{{ __('wide-store::my-stocks.stock') }}"></fb-input>
-                <fb-input name="availability" label="{{ __('wide-store::my-stocks.availability') }}"></fb-input>
-                <fb-input name="department" label="{{ __('wide-store::my-stocks.department') }}"></fb-input>
-                <fb-input name="type" label="{{ __('wide-store::general.type') }}"></fb-input>
+                <div v-if="AWES._store.state.forms['add-my-stock'].fields.deliverer" class="mt-10">
+
+                    <fb-select name="configuration_uuid" label="{{ __('wide-store::schedulers.configuration') }}"
+                               :url="'{{route('wide-store.configurations.scope')}}?q=%s&module='
+                                + AWES._store.state.forms['add-my-stock'].fields.deliverer" auto-fetch=""
+                               options-value="uuid" options-name="name" :multiple="false" placeholder-text=" "></fb-select>
+
+                    <fb-select name="product_uuid" label="{{ __('wide-store::general.product') }}"
+                               :url="'{{route('wide-store.products.scope')}}?q=%s&deliverer='
+                                + AWES._store.state.forms['add-my-stock'].fields.deliverer"
+                               options-value="uuid" options-name="name" :multiple="false" placeholder-text=" "></fb-select>
+
+                    <fb-input type="number" name="stock" label="{{ __('wide-store::my-stocks.stock') }}"></fb-input>
+                    <fb-input name="availability" label="{{ __('wide-store::my-stocks.availability') }}"></fb-input>
+                    <fb-input name="department" label="{{ __('wide-store::my-stocks.department') }}"></fb-input>
+                    <fb-input name="type" label="{{ __('wide-store::general.type') }}"></fb-input>
+
+                </div>
             </div>
+
+
         </form-builder>
     </modal-window>
 
@@ -119,9 +133,9 @@
                       send-text="{{ __('wide-store::general.save') }}"
                       cancel-text="{{ __('wide-store::general.cancel') }}">
 
-            <fb-input type="hidden" name="integration_uuid"></fb-input>
+            <fb-input type="hidden" name="deliverer"></fb-input>
+            <fb-input type="hidden" name="configuration_uuid"></fb-input>
             <fb-input type="hidden" name="product_uuid"></fb-input>
-            <fb-input name="deliverer" label="{{ __('wide-store::general.deliverer') }}"></fb-input>
             <fb-input type="number" name="stock" label="{{ __('wide-store::my-stocks.stock') }}"></fb-input>
             <fb-input name="availability" label="{{ __('wide-store::my-stocks.availability') }}"></fb-input>
             <fb-input name="department" label="{{ __('wide-store::my-stocks.department') }}"></fb-input>

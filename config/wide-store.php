@@ -119,6 +119,7 @@ return [
         'configurations' => 'NetLinker\WideStore\Sections\Configurations\Controllers\ConfigurationController',
 
         'formatters' => 'NetLinker\WideStore\Sections\Formatters\Controllers\FormatterController',
+
     ],
 
     /*

@@ -33,9 +33,9 @@
         <template slot="header">
             <h3>{{__('wide-store::my-prices.price_list') }}</h3>
         </template>
-        <tb-column name="no_field_integration_uuid" label="{{__('wide-store::my-prices.integration') }}">
+        <tb-column name="no_field_configuration_uuid" label="{{__('wide-store::my-prices.configuration') }}">
             <template slot-scope="col">
-                @{{ col.data.integration.name }}
+                @{{ col.data.configuration.name }}
             </template>
         </tb-column>
         <tb-column name="no_field_product_uuid" label="{{__('wide-store::general.product') }}">
@@ -90,20 +90,30 @@
         <form-builder name="add-my-price" url="{{ route('wide-store.my_prices.store') }}" @sended="AWES.emit('content::my_prices_table:update')"
                       send-text="{{ __('wide-store::general.add') }}"
                       cancel-text="{{ __('wide-store::general.cancel') }}">
+
             <div class="section" v-if="AWES._store.state.forms['add-my-price']">
 
-                <fb-select name="integration_uuid" label="{{ __('wide-store::my-prices.integration') }}"
-                           url="{{route('wide-store.integrations.scope')}}?q=%s"
-                           options-value="uuid" options-name="name" :multiple="false" placeholder-text=" "></fb-select>
+                <fb-select name="deliverer" label="{{ __('wide-store::general.deliverer') }}"
+                           url="{{route('wide-store.deliverers.scope')}}?q=%s" auto-fetch=""
+                           :disabled="!!AWES._store.state.forms['add-my-price'].fields.deliverer"
+                           options-value="value" options-name="name" :multiple="false" placeholder-text=" "></fb-select>
 
-                <fb-select name="product_uuid" label="{{ __('wide-store::general.product') }}"
-                           url="{{route('wide-store.products.scope')}}?q=%s"
-                           options-value="uuid" options-name="name" :multiple="false" placeholder-text=" "></fb-select>
+                <div v-if="AWES._store.state.forms['add-my-price'].fields.deliverer" class="mt-10">
 
-                <fb-input name="deliverer" label="{{ __('wide-store::general.deliverer') }}"></fb-input>
-                <fb-input name="currency" label="{{ __('wide-store::my-prices.currency') }}"></fb-input>
-                <fb-input name="price" label="{{ __('wide-store::my-prices.price') }}"></fb-input>
-                <fb-input name="type" label="{{ __('wide-store::general.type') }}"></fb-input>
+                    <fb-select name="configuration_uuid" label="{{ __('wide-store::schedulers.configuration') }}"
+                               :url="'{{route('wide-store.configurations.scope')}}?q=%s&module='
+                                + AWES._store.state.forms['add-my-price'].fields.deliverer" auto-fetch=""
+                               options-value="uuid" options-name="name" :multiple="false" placeholder-text=" "></fb-select>
+
+                    <fb-select name="product_uuid" label="{{ __('wide-store::general.product') }}"
+                               :url="'{{route('wide-store.products.scope')}}?q=%s&deliverer='
+                                + AWES._store.state.forms['add-my-price'].fields.deliverer"
+                               options-value="uuid" options-name="name" :multiple="false" placeholder-text=" "></fb-select>
+
+                    <fb-input name="currency" label="{{ __('wide-store::my-prices.currency') }}"></fb-input>
+                    <fb-input name="price" label="{{ __('wide-store::my-prices.price') }}"></fb-input>
+                    <fb-input name="type" label="{{ __('wide-store::general.type') }}"></fb-input>
+                </div>
             </div>
         </form-builder>
     </modal-window>
@@ -114,9 +124,10 @@
                       send-text="{{ __('wide-store::general.save') }}"
                       cancel-text="{{ __('wide-store::general.cancel') }}">
 
-            <fb-input type="hidden" name="integration_uuid"></fb-input>
+            <fb-input type="hidden" name="deliverer"></fb-input>
+            <fb-input type="hidden" name="configuration_uuid"></fb-input>
             <fb-input type="hidden" name="product_uuid"></fb-input>
-            <fb-input name="deliverer" label="{{ __('wide-store::general.deliverer') }}"></fb-input>
+
             <fb-input name="currency" label="{{ __('wide-store::my-prices.currency') }}"></fb-input>
             <fb-input name="price" label="{{ __('wide-store::my-prices.price') }}"></fb-input>
             <fb-input name="type" label="{{ __('wide-store::general.type') }}"></fb-input>

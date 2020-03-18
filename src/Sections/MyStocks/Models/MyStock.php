@@ -52,7 +52,7 @@ class MyStock extends Model implements OwnableContract
      *
      * @var array
      */
-    public $fillable = ['uuid', 'owner_uuid','integration_uuid', 'product_uuid', 'deliverer', 'stock', 'availability', 'department', 'type'];
+    public $fillable = ['uuid', 'owner_uuid','configuration_uuid', 'product_uuid', 'deliverer', 'stock', 'availability', 'department', 'type'];
 
     public $orderable = [];
 

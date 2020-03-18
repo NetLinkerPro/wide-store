@@ -8,7 +8,9 @@ use NetLinker\WideStore\Sections\Products\Scopes\ProductScopes;
 
 class ProductRepository extends BaseRepository
 {
-    protected $searchable = [];
+    protected $searchable = [
+        'deliverer'
+    ];
 
     public function entity()
     {

@@ -51,7 +51,7 @@ class MyPrice extends Model implements OwnableContract
      *
      * @var array
      */
-    public $fillable = ['uuid', 'owner_uuid','integration_uuid', 'product_uuid', 'deliverer', 'currency', 'type', 'price'];
+    public $fillable = ['uuid', 'owner_uuid','configuration_uuid', 'product_uuid', 'deliverer', 'currency', 'type', 'price'];
 
     public $orderable = [];
 

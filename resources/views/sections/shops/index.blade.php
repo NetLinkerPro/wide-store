@@ -33,14 +33,14 @@
         <template slot="header">
             <h3>{{__('wide-store::shops.shop_list') }}</h3>
         </template>
-        <tb-column name="no_field_format_uuid" label="{{__('wide-store::shops.format') }}">
+        <tb-column name="deliverer" label="{{__('wide-store::general.deliverer') }}">
             <template slot-scope="col">
-                @{{ col.data.format.name }}
+                @{{ col.data.deliverer }}
             </template>
         </tb-column>
-        <tb-column name="integration_uuid" label="{{__('wide-store::shops.integration') }}">
+        <tb-column name="no_field_formatter_uuid" label="{{__('wide-store::shops.formatter') }}">
             <template slot-scope="col">
-                @{{ col.data.integration_uuid }}
+                @{{ col.data.formatter.name }}
             </template>
         </tb-column>
         <tb-column name="name" label="{{__('wide-store::general.name') }}">
@@ -74,19 +74,28 @@
         <form-builder name="add-shop" url="{{ route('wide-store.shops.store') }}" @sended="AWES.emit('content::shops_table:update')"
                       send-text="{{ __('wide-store::general.add') }}"
                       cancel-text="{{ __('wide-store::general.cancel') }}">
-            <div class="section" v-if="AWES._store.state.forms['add-shop']">
 
-                <fb-select name="format_uuid" label="{{ __('wide-store::shops.format') }}"
-                           url="{{route('wide-store.formats.scope')}}" auto-fetch=""
-                           options-value="uuid" options-name="name" :multiple="false" placeholder-text=" "></fb-select>
+            <div v-if="AWES._store.state.forms['add-shop']">
 
-                <fb-select name="integration_uuid" label="{{ __('wide-store::shops.integration') }}"
-                           url="{{route('wide-store.integrations.scope')}}" auto-fetch=""
-                           options-value="uuid" options-name="uuid" :multiple="false" placeholder-text=" "></fb-select>
+                <fb-select name="deliverer" label="{{ __('wide-store::general.deliverer') }}"
+                           url="{{route('wide-store.deliverers.scope')}}?q=%s" auto-fetch=""
+                           :disabled="!!AWES._store.state.forms['add-shop'].fields.deliverer"
+                           options-value="value" options-name="name" :multiple="false" placeholder-text=" "></fb-select>
 
-                <fb-input name="name" label="{{ __('wide-store::general.name') }}"></fb-input>
-                <fb-textarea name="description" label="{{ __('wide-store::general.description') }}"></fb-textarea>
+                <div v-if="AWES._store.state.forms['add-shop'].fields.deliverer" class="mt-10">
+
+                    <fb-select name="formatter_uuid" label="{{ __('wide-store::shops.formatter') }}"
+                               :url="'{{route('wide-store.formatters.scope')}}?q=%s&module='
+                                + AWES._store.state.forms['add-shop'].fields.deliverer" auto-fetch=""
+                               options-value="uuid" options-name="name" :multiple="false" placeholder-text=" "></fb-select>
+
+                    <fb-input name="name" label="{{ __('wide-store::general.name') }}"></fb-input>
+                    <fb-textarea name="description" label="{{ __('wide-store::general.description') }}"></fb-textarea>
+
+                </div>
+
             </div>
+
         </form-builder>
     </modal-window>
 
@@ -96,8 +105,8 @@
                       send-text="{{ __('wide-store::general.save') }}"
                       cancel-text="{{ __('wide-store::general.cancel') }}">
 
-            <fb-input type="hidden" name="format_uuid"></fb-input>
-            <fb-input type="hidden" name="integration_uuid"></fb-input>
+            <fb-input type="hidden" name="deliverer"></fb-input>
+            <fb-input type="hidden" name="formatter_uuid"></fb-input>
             <fb-input name="name" label="{{ __('wide-store::general.name') }}"></fb-input>
             <fb-textarea name="description" label="{{ __('wide-store::general.description') }}"></fb-textarea>
         </form-builder>

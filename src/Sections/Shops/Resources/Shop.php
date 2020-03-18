@@ -21,16 +21,9 @@ class Shop extends JsonResource
     public function toArray($request)
     {
 
-        $integration = Integration::collection((new IntegrationRepository())->findWhere(['uuid' => $this->integration_uuid]))[0];
-        $format = Format::collection((new FormatRepository())->findWhere(['uuid' => $this->format_uuid]))[0];
-
         return [
             'id' => $this->id,
             'uuid' => $this->uuid,
-            'integration_uuid' => $this->integration_uuid,
-            'integration' => $integration,
-            'format_uuid' => $this->format_uuid,
-            'format' => $format,
             'name' => $this->name,
             'description' => $this->description,
         ];

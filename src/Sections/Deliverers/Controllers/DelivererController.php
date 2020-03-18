@@ -39,7 +39,7 @@ class DelivererController extends BaseController
     public function scope(Request $request)
     {
         return Deliverer::collection(
-            $this->deliverers->all()
+            $this->deliverers->scope($request)
         );
     }
 

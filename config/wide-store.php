@@ -115,6 +115,9 @@ return [
         'deliverers' => 'NetLinker\WideStore\Sections\Deliverers\Controllers\DelivererController',
 
         'settings' => 'NetLinker\WideStore\Sections\Settings\Controllers\SettingController',
+
+        'configurations' => 'NetLinker\WideStore\Sections\Configurations\Controllers\ConfigurationController',
+
     ],
 
     /*

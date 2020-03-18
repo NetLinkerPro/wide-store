@@ -244,6 +244,11 @@ Route::domain(config('wide-store.domain'))
             Route::patch('{id?}', config('wide-store.controllers.settings') . '@update')->name('update');
             Route::delete('{id?}', config('wide-store.controllers.settings') . '@destroy')->name('destroy');
         });
+
+        # Formatters
+        Route::prefix('formatters')->as('formatters.')->group(function () {
+            Route::get('scope', config('wide-store.controllers.formatters') . '@scope')->name('scope');
+        });
 });
 
 

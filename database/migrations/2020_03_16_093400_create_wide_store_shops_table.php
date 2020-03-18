@@ -21,8 +21,8 @@ class CreateWideStoreShopsTable extends Migration
             $table->string('uuid', 36)->index();
             $table->string('owner_uuid', 36)->index();
 
-            $table->string('integration_uuid')->index();
-            $table->string('format_uuid', 36)->index();
+            $table->string('deliverer')->index();
+            $table->string('formatter_uuid')->index();
 
             $table->string('name');
             $table->text('description')->nullable();
@@ -30,7 +30,7 @@ class CreateWideStoreShopsTable extends Migration
             $table->softDeletes();
             $table->timestamps();
 
-            $table->unique(['deleted_at','integration_uuid', 'format_uuid'], 'wsshops_format_integration');
+            $table->unique(['deleted_at','name', 'deliverer', 'formatter_uuid'], 'wsshops_name_deliverer_formatter');
         });
     }
 

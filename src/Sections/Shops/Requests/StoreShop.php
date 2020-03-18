@@ -25,6 +25,8 @@ class StoreShop extends FormRequest
     public function rules()
     {
         return [
+            'deliverer' => 'required|string|max:255',
+            'formatter_uuid'=> 'required|string|max:36',
             'name' => ['required', 'string', 'max:255', Rule::unique('wide_store_shops')->where(function ($query) {
                 return $query->where('name', $this->name)
                     ->whereNull('deleted_at');

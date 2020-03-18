@@ -49,7 +49,7 @@ class Shop extends Model implements OwnableContract
      *
      * @var array
      */
-    public $fillable = ['uuid', 'owner_uuid', 'name', 'description'];
+    public $fillable = ['uuid', 'owner_uuid', 'name', 'description', 'deliverer', 'formatter_uuid'];
 
     public $orderable = [];
 

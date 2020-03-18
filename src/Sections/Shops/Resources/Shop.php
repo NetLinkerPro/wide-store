@@ -3,12 +3,7 @@
 namespace NetLinker\WideStore\Sections\Shops\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
-use NetLinker\WideStore\Sections\Categories\Repositories\CategoryRepository;
-use NetLinker\WideStore\Sections\Formats\Repositories\FormatRepository;
-use NetLinker\WideStore\Sections\Formats\Resources\Format;
-use NetLinker\WideStore\Sections\ShopProducts\Repositories\ShopProductRepository;
-use NetLinker\WideStore\Sections\Integrations\Repositories\IntegrationRepository;
-use NetLinker\WideStore\Sections\Integrations\Resources\Integration;
+use NetLinker\WideStore\Sections\Formatters\Services\Deliverer;
 
 class Shop extends JsonResource
 {
@@ -21,9 +16,19 @@ class Shop extends JsonResource
     public function toArray($request)
     {
 
+        $deliverer = new Deliverer();
+
+        $resource = $deliverer->getClassResource($this->deliverer);
+        $repository = $deliverer->getRepository($this->deliverer);
+
+        $formatter = $resource::collection($repository->findWhere(['uuid' => $this->formatter_uuid]))[0];
+
         return [
             'id' => $this->id,
             'uuid' => $this->uuid,
+            'deliverer' => $this->deliverer,
+            'formatter_uuid' => $this->formatter_uuid,
+            'formatter' => $formatter,
             'name' => $this->name,
             'description' => $this->description,
         ];

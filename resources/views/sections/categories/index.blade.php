@@ -50,7 +50,16 @@
                 @{{ col.data.name }}
             </template>
         </tb-column>
-
+        <tb-column name="lang" label="{{__('wide-store::general.language') }}">
+            <template slot-scope="col">
+                @{{ col.data.lang }}
+            </template>
+        </tb-column>
+        <tb-column name="type" label="{{__('wide-store::general.type') }}">
+            <template slot-scope="col">
+                @{{ col.data.type }}
+            </template>
+        </tb-column>
             <tb-column name="no_field_options" label="{{ __('wide-store::general.options') }}">
                 <template slot-scope="d">
                     <context-menu right boundary="table">
@@ -84,6 +93,8 @@
 
                 <fb-input name="deliverer" label="{{ __('wide-store::general.deliverer') }}"></fb-input>
                 <fb-input name="name" label="{{ __('wide-store::general.name') }}"></fb-input>
+                <fb-input name="lang" label="{{ __('wide-store::general.language') }}"></fb-input>
+                <fb-input name="type" label="{{ __('wide-store::general.type') }}"></fb-input>
             </div>
         </form-builder>
     </modal-window>
@@ -97,6 +108,8 @@
             <fb-input type="hidden" name="parent_uuid"></fb-input>
             <fb-input name="deliverer" label="{{ __('wide-store::general.deliverer') }}"></fb-input>
             <fb-input name="name" label="{{ __('wide-store::general.name') }}"></fb-input>
+            <fb-input name="lang" label="{{ __('wide-store::general.language') }}"></fb-input>
+            <fb-input name="type" label="{{ __('wide-store::general.type') }}"></fb-input>
         </form-builder>
     </modal-window>
 

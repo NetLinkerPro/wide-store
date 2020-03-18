@@ -20,7 +20,7 @@ class CreateWideStoreMyStocksTable extends Migration
             $table->bigIncrements('id');
             $table->string('uuid', 36)->index();
             $table->string('owner_uuid', 36)->index();
-            $table->string('integration_uuid', 36)->index();
+            $table->string('configuration_uuid', 36)->index();
             $table->string('product_uuid', 36)->index();
             $table->string('deliverer')->index();
 
@@ -32,7 +32,7 @@ class CreateWideStoreMyStocksTable extends Migration
             $table->softDeletes();
             $table->timestamps();
 
-            $table->unique(['deleted_at','integration_uuid','product_uuid','deliverer', 'department','type'], 'wsms_integ_prod_uuid_deliv_depart_type');
+            $table->unique(['deleted_at','configuration_uuid','product_uuid','deliverer', 'department','type'], 'wsms_integ_prod_uuid_deliv_depart_type');
         });
     }
 

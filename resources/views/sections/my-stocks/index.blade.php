@@ -105,7 +105,7 @@
 
                 <div v-if="AWES._store.state.forms['add-my-stock'].fields.deliverer" class="mt-10">
 
-                    <fb-select name="configuration_uuid" label="{{ __('wide-store::schedulers.configuration') }}"
+                    <fb-select name="configuration_uuid" label="{{ __('wide-store::my-stock.configuration') }}"
                                :url="'{{route('wide-store.configurations.scope')}}?q=%s&module='
                                 + AWES._store.state.forms['add-my-stock'].fields.deliverer" auto-fetch=""
                                options-value="uuid" options-name="name" :multiple="false" placeholder-text=" "></fb-select>

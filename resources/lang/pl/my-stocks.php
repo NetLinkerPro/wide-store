@@ -8,7 +8,7 @@ return [
     'currency' => 'Waluta',
     'department' => 'Oddział',
     'edition_stock' => 'Edycja dostępności',
-    'integration' => 'Integracja',
+    'configuration' => 'Konfiguracja',
     'shop' => 'Magazyn',
     'stock_list' => 'Lista dostępności',
     'stock_was_successfully_added'=>'Dostępność została pomyślnie dodana',

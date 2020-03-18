@@ -5,7 +5,7 @@ return [
     'are_you_sure_delete_price' => 'Czy na pewno usunąć cenę?',
     'currency' => 'Waluta',
     'edition_price' => 'Edycja ceny',
-    'integration' => 'Integracja',
+    'configuration' => 'Konfiguracja',
     'price_list' => 'Lista cen',
     'price_was_successfully_added'=>'Cena została pomyślnie dodany',
     'price_was_successfully_deleted' =>'Cena został pomyślnie usunięty',

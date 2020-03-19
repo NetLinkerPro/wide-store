@@ -24,7 +24,10 @@ Please see the [changelog](changelog.md) for more information on what has change
 ## Testing
 
 ``` bash
-$ ./vendor/bin/dusk-updater detect --auto-update && PKGKIT_CDN_KEY=xxx REDIS_HOST=0.0.0.0 REDIS_PASSWORD=secret ./vendor/bin/phpunit
+$ ./vendor/bin/dusk-updater detect --auto-update && PKGKIT_CDN_KEY=xxx WIDE_STORE_OVH_URL=xxx 
+WIDE_STORE_OVH_USER=xxx WIDE_STORE_OVH_PASS=xxx WIDE_STORE_OVH_USER_DOMAIN=Default WIDE_STORE_OVH_REGION=xxx 
+WIDE_STORE_OVH_TENANT_NAME=xxx WIDE_STORE_OVH_CONTAINER=xxx WIDE_STORE_OVH_PROJECT_ID=xxx WIDE_STORE_OVH_URL_KEY=xxx 
+WIDE_STORE_OVH_CUSTOM_ENDPOINT=xxx REDIS_HOST=0.0.0.0 REDIS_PASSWORD=secret ./vendor/bin/phpunit
 ```
 
 For tests can be set all setting from `.env` file as `REDIS_PORT=6379`.

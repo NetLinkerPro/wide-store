@@ -23,8 +23,8 @@ class CreateWideStorePricesTable extends Migration
 
                 $table->bigIncrements('id');
                 $table->string('uuid', 36)->index();
-                $table->string('product_uuid', 36)->index();
                 $table->string('deliverer')->index();
+                $table->string('product_uuid', 36)->index();
                 $table->string('currency', 48)->index();
                 $table->string('type')->index();
                 $table->decimal('price', 12, 5);

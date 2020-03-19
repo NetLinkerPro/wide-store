@@ -27,5 +27,15 @@
         <env name="REDIS_PASSWORD" value="secret"/>
         <env name="CACHE_DRIVER" value="redis"/>
         <env name="PKGKIT_CDN_KEY" value=""/>
+        <env name="WIDE_STORE_OVH_URL" value=""/>
+        <env name="WIDE_STORE_OVH_USER" value=""/>
+        <env name="WIDE_STORE_OVH_PASS" value=""/>
+        <env name="WIDE_STORE_OVH_USER_DOMAIN" value=""/>
+        <env name="WIDE_STORE_OVH_REGION" value=""/>
+        <env name="WIDE_STORE_OVH_TENANT_NAME" value=""/>
+        <env name="WIDE_STORE_OVH_CONTAINER" value=""/>
+        <env name="WIDE_STORE_OVH_PROJECT_ID" value=""/>
+        <env name="WIDE_STORE_OVH_URL_KEY" value=""/>
+        <env name="WIDE_STORE_OVH_CUSTOM_ENDPOINT" value=""/>
     </php>
 </phpunit>

@@ -3,6 +3,7 @@
 namespace NetLinker\WideStore;
 
 use Illuminate\Contracts\Events\Dispatcher;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
 use NetLinker\WideStore\Boot\ConnectionDatabaseCreator;
@@ -20,6 +21,8 @@ class WideStoreServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerEvents();
+
+        $this->registerDisk();
 
         $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'wide-store');
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'wide-store');
@@ -104,6 +107,14 @@ class WideStoreServiceProvider extends ServiceProvider
                 $events->listen($event, $listener);
             }
         }
+    }
+
+    /**
+     * Register disk
+     */
+    private function registerDisk()
+    {
+        Config::set('filesystems.disks.wide_store',config('wide-store.disk'));
     }
 
 }

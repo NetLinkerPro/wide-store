@@ -32,7 +32,8 @@
         "netlinker/fair-queue": "^1.0",
         "netlinker/lead-allegro": "^1.0",
         "symfony/dom-crawler": "^5.0",
-        "rap2hpoutre/fast-excel": "^1.7"
+        "rap2hpoutre/fast-excel": "^1.7",
+        "sausin/laravel-ovh": "^3.2"
     },
     "require-dev": {
         "brainmaestro/composer-git-hooks": "^2.8",

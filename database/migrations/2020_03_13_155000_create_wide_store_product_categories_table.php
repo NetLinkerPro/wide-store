@@ -22,9 +22,9 @@ class CreateWideStoreProductCategoriesTable extends Migration
             Schema::connection($connection)->create('wide_store_product_categories', function (Blueprint $table) {
 
                 $table->bigIncrements('id');
+                $table->string('deliverer')->index();
                 $table->string('product_uuid', 36)->index();
                 $table->string('category_uuid', 36)->index();
-                $table->string('deliverer')->index();
 
                 $table->string('type')->index();
                 $table->softDeletes();

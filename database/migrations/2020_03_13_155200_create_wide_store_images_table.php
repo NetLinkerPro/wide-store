@@ -27,10 +27,10 @@ class CreateWideStoreImagesTable extends Migration
                 $table->string('deliverer')->index();
                 $table->string('identifier')->index();
 
-                $table->string('url_source')->nullable();
+                $table->text('url_source')->nullable();
                 $table->string('path')->nullable();
                 $table->string('disk')->index()->nullable();
-                $table->string('url_target')->nullable();
+                $table->text('url_target')->nullable();
                 $table->integer('order')->default(20);
                 $table->boolean('main')->default(false);
                 $table->boolean('active')->default(true);

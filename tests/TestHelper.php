@@ -177,10 +177,33 @@ trait TestHelper
         $app['config']->set('app.url', $_ENV['APP_URL']);
 
         // Load env variables from phpunit command or file .env
-        $awesKey = env('PKGKIT_CDN_KEY');
-
         $fileEnv = Dotenv::create(__DIR__ . '/../')->load();
-        $_ENV['PKGKIT_CDN_KEY'] = $awesKey ? $awesKey : $fileEnv['PKGKIT_CDN_KEY'];
+        $_ENV['PKGKIT_CDN_KEY'] = env('PKGKIT_CDN_KEY') ? env('PKGKIT_CDN_KEY') : $fileEnv['PKGKIT_CDN_KEY'];
+        $_ENV['WIDE_STORE_OVH_URL'] = env('WIDE_STORE_OVH_URL') ? env('WIDE_STORE_OVH_URL') : $fileEnv['WIDE_STORE_OVH_URL'];
+        $_ENV['WIDE_STORE_OVH_USER'] = env('WIDE_STORE_OVH_USER') ? env('WIDE_STORE_OVH_USER') : $fileEnv['WIDE_STORE_OVH_USER'];
+        $_ENV['WIDE_STORE_OVH_PASS'] = env('WIDE_STORE_OVH_PASS') ? env('WIDE_STORE_OVH_PASS') : $fileEnv['WIDE_STORE_OVH_PASS'];
+        $_ENV['WIDE_STORE_OVH_USER_DOMAIN'] = env('WIDE_STORE_OVH_USER_DOMAIN') ? env('WIDE_STORE_OVH_USER_DOMAIN') : $fileEnv['WIDE_STORE_OVH_USER_DOMAIN'];
+        $_ENV['WIDE_STORE_OVH_REGION'] = env('WIDE_STORE_OVH_REGION') ? env('WIDE_STORE_OVH_REGION') : $fileEnv['WIDE_STORE_OVH_REGION'];
+        $_ENV['WIDE_STORE_OVH_TENANT_NAME'] = env('WIDE_STORE_OVH_TENANT_NAME') ? env('WIDE_STORE_OVH_TENANT_NAME') : $fileEnv['WIDE_STORE_OVH_TENANT_NAME'];
+        $_ENV['WIDE_STORE_OVH_CONTAINER'] = env('WIDE_STORE_OVH_CONTAINER') ? env('WIDE_STORE_OVH_CONTAINER') : $fileEnv['WIDE_STORE_OVH_CONTAINER'];
+        $_ENV['WIDE_STORE_OVH_PROJECT_ID'] = env('WIDE_STORE_OVH_PROJECT_ID') ? env('WIDE_STORE_OVH_PROJECT_ID') : $fileEnv['WIDE_STORE_OVH_PROJECT_ID'];
+        $_ENV['WIDE_STORE_OVH_URL_KEY'] = env('WIDE_STORE_OVH_URL_KEY') ? env('WIDE_STORE_OVH_URL_KEY') : $fileEnv['WIDE_STORE_OVH_URL_KEY'];
+        $_ENV['WIDE_STORE_OVH_CUSTOM_ENDPOINT'] = env('WIDE_STORE_OVH_CUSTOM_ENDPOINT') ? env('WIDE_STORE_OVH_CUSTOM_ENDPOINT') : $fileEnv['WIDE_STORE_OVH_CUSTOM_ENDPOINT'];
+
+        // Set disk
+        $app['config']->set('wide-store.disk',[
+            'server' => $_ENV['WIDE_STORE_OVH_URL'],
+            'driver' => 'ovh',
+            'user' => $_ENV['WIDE_STORE_OVH_USER'],
+            'pass' => $_ENV['WIDE_STORE_OVH_PASS'],
+            'userDomain' => $_ENV['WIDE_STORE_OVH_USER_DOMAIN'],
+            'region' => $_ENV['WIDE_STORE_OVH_REGION'],
+            'tenantName' => $_ENV['WIDE_STORE_OVH_TENANT_NAME'],
+            'container' => $_ENV['WIDE_STORE_OVH_CONTAINER'],
+            'projectId' => $_ENV['WIDE_STORE_OVH_PROJECT_ID'],
+            'urlKey' => $_ENV['WIDE_STORE_OVH_URL_KEY'],
+            'endpoint' => $_ENV['WIDE_STORE_OVH_CUSTOM_ENDPOINT'],
+        ]);
 
         // Set browser with UI for tests
         $_ENV['BROWSER_WITH_UI'] = $fileEnv['BROWSER_WITH_UI'] ?? false;
@@ -242,6 +265,7 @@ trait TestHelper
             'AwesIO\SystemNotify\SystemNotifyServiceProvider',
             'AwesIO\Repository\RepositoryServiceProvider',
             'BeyondCode\DumpServer\DumpServerServiceProvider',
+            'Sausin\LaravelOvh\OVHServiceProvider'
         ];
     }
 

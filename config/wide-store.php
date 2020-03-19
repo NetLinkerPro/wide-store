@@ -145,4 +145,26 @@ return [
 
     'queues' => [],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Disk
+    |--------------------------------------------------------------------------
+    |
+    | Disk for files
+    |
+    */
+    'disk' => [
+        'server' => env('WIDE_STORE_OVH_URL'),
+        'driver' => 'ovh',
+        'user' => env('WIDE_STORE_OVH_USER'),
+        'pass' => env('WIDE_STORE_OVH_PASS'),
+        'userDomain' => env('WIDE_STORE_OVH_USER_DOMAIN', 'Default'),
+        'region' => env('WIDE_STORE_OVH_REGION'),
+        'tenantName' => env('WIDE_STORE_OVH_TENANT_NAME'),
+        'container' => env('WIDE_STORE_OVH_CONTAINER'),
+        'projectId' => env('WIDE_STORE_OVH_PROJECT_ID'),
+        'urlKey' => env('WIDE_STORE_OVH_URL_KEY'),
+        'endpoint' => env('WIDE_STORE_OVH_CUSTOM_ENDPOINT'),
+    ],
+
 ];

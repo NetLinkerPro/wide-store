@@ -22,8 +22,8 @@ class CreateWideStoreIdentifiersTable extends Migration
 
                 $table->bigIncrements('id');
                 $table->string('uuid', 36)->index();
-                $table->string('product_uuid', 36)->index();
                 $table->string('deliverer')->index();
+                $table->string('product_uuid', 36)->index();
                 $table->string('identifier')->index();
                 $table->string('type')->index();
 

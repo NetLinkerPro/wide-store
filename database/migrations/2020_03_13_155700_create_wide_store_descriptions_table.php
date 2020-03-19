@@ -15,22 +15,27 @@ class CreateWideStoreDescriptionsTable extends Migration
     public function up()
     {
 
-        Schema::create('wide_store_descriptions', function (Blueprint $table) {
+        $connections = array_unique(array_filter([config('database.default'), config('wide-store.connection')], 'strlen'));
 
-            $table->bigIncrements('id');
-            $table->string('uuid', 36)->index();
-            $table->string('product_uuid', 36)->index();
-            $table->string('deliverer')->index();
+        foreach ($connections as $connection) {
 
-            $table->mediumText('description');
+            Schema::connection($connection)->create('wide_store_descriptions', function (Blueprint $table) {
 
-            $table->string('lang')->index();
-            $table->string('type')->index();
-            $table->softDeletes();
-            $table->timestamps();
+                $table->bigIncrements('id');
+                $table->string('uuid', 36)->index();
+                $table->string('product_uuid', 36)->index();
+                $table->string('deliverer')->index();
 
-            $table->unique(['deleted_at','product_uuid','deliverer', 'lang', 'type'], 'wsd_product_uuid_deliverer_lang_type');
-        });
+                $table->mediumText('description');
+
+                $table->string('lang')->index();
+                $table->string('type')->index();
+                $table->softDeletes();
+                $table->timestamps();
+
+                $table->unique(['deleted_at', 'product_uuid', 'deliverer', 'lang', 'type'], 'wsd_product_uuid_deliverer_lang_type');
+            });
+        }
     }
 
     /**
@@ -40,6 +45,11 @@ class CreateWideStoreDescriptionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('wide_store_descriptions');
+        $connections = array_unique(array_filter([config('database.default'), config('wide-store.connection')], 'strlen'));
+
+        foreach ($connections as $connection) {
+
+            Schema::connection($connection)->dropIfExists('wide_store_descriptions');
+        }
     }
 }

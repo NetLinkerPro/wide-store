@@ -14,21 +14,26 @@ class CreateWideStoreIdentifiersTable extends Migration
      */
     public function up()
     {
+        $connections = array_unique(array_filter([config('database.default'), config('wide-store.connection')], 'strlen'));
 
-        Schema::create('wide_store_identifiers', function (Blueprint $table) {
+        foreach ($connections as $connection) {
 
-            $table->bigIncrements('id');
-            $table->string('uuid', 36)->index();
-            $table->string('product_uuid', 36)->index();
-            $table->string('deliverer')->index();
-            $table->string('identifier')->index();
-            $table->string('type')->index();
+            Schema::connection($connection)->create('wide_store_identifiers', function (Blueprint $table) {
 
-            $table->softDeletes();
-            $table->timestamps();
+                $table->bigIncrements('id');
+                $table->string('uuid', 36)->index();
+                $table->string('product_uuid', 36)->index();
+                $table->string('deliverer')->index();
+                $table->string('identifier')->index();
+                $table->string('type')->index();
 
-            $table->unique(['deleted_at','product_uuid', 'deliverer', 'identifier', 'type'], 'wsi_product_uuid_deliverer_identifier_type');
-        });
+                $table->softDeletes();
+                $table->timestamps();
+
+                $table->unique(['deleted_at', 'product_uuid', 'deliverer', 'identifier', 'type'], 'wsi_product_uuid_deliverer_identifier_type');
+            });
+
+        }
     }
 
     /**
@@ -38,6 +43,12 @@ class CreateWideStoreIdentifiersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('wide_store_identifiers');
+        $connections = array_unique(array_filter([config('database.default'), config('wide-store.connection')], 'strlen'));
+
+        foreach ($connections as $connection) {
+
+            Schema::connection($connection)->dropIfExists('wide_store_identifiers');
+
+        }
     }
 }

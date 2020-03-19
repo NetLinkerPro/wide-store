@@ -3,7 +3,9 @@
 namespace NetLinker\WideStore;
 
 use Illuminate\Contracts\Events\Dispatcher;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
+use NetLinker\WideStore\Boot\ConnectionDatabaseCreator;
 
 class WideStoreServiceProvider extends ServiceProvider
 {

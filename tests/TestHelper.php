@@ -210,6 +210,19 @@ trait TestHelper
             'prefix' => '',
         ]);
 
+        // Setup WideStore database to use sqlite :memory:
+        $database2 = __DIR__ . '/database/database_2.sqlite';
+        if (!File::exists($database2)) {
+            File::put($database2, '');
+        }
+
+        $app['config']->set('database.connections.testbench2', [
+            'driver' => 'sqlite',
+            'database' => $database2,
+            'prefix' => '',
+        ]);
+
+        $app['config']->set('wide-store.connection', 'testbench');
 
         Carbon::setLocale(config('app.locale'));
     }

@@ -11,6 +11,20 @@ class Tax extends Model
 
     use SoftDeletes;
 
+
+    /**
+     * Get connection name
+     *
+     * @return string|null
+     */
+    public function getConnectionName()
+    {
+        if (config('wide-store.connection')){
+            $this->setConnection(config('wide-store.connection'));
+        }
+        return parent::getConnectionName();
+    }
+
     /**
      * The table associated with the model.
      *

@@ -18,6 +18,18 @@ return [
 
     /*
    |--------------------------------------------------------------------------
+   | Database connection for products
+   |--------------------------------------------------------------------------
+   |
+   | Common product are store in separate database.
+   | If value is null, copy properties from default
+   | connection of database for connection `wide_store`.
+   |
+   */
+    'connection' => null,
+
+    /*
+   |--------------------------------------------------------------------------
    | Domain
    |--------------------------------------------------------------------------
    |

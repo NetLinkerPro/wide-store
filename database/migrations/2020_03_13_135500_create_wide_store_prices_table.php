@@ -15,20 +15,25 @@ class CreateWideStorePricesTable extends Migration
     public function up()
     {
 
-        Schema::create('wide_store_prices', function (Blueprint $table) {
+        $connections = array_unique(array_filter([config('database.default'), config('wide-store.connection')], 'strlen'));
 
-            $table->bigIncrements('id');
-            $table->string('uuid', 36)->index();
-            $table->string('product_uuid', 36)->index();
-            $table->string('deliverer')->index();
-            $table->string('currency', 48)->index();
-            $table->string('type')->index();
-            $table->decimal('price', 12,5);
-            $table->softDeletes();
-            $table->timestamps();
+        foreach ($connections as $connection) {
 
-            $table->unique(['deleted_at','product_uuid','deliverer', 'currency', 'type'], 'wsp_product_uuid_deliverer_currency_type');
-        });
+            Schema::connection($connection)->create('wide_store_prices', function (Blueprint $table) {
+
+                $table->bigIncrements('id');
+                $table->string('uuid', 36)->index();
+                $table->string('product_uuid', 36)->index();
+                $table->string('deliverer')->index();
+                $table->string('currency', 48)->index();
+                $table->string('type')->index();
+                $table->decimal('price', 12, 5);
+                $table->softDeletes();
+                $table->timestamps();
+
+                $table->unique(['deleted_at', 'product_uuid', 'deliverer', 'currency', 'type'], 'wsp_product_uuid_deliverer_currency_type');
+            });
+        }
     }
 
     /**
@@ -38,6 +43,11 @@ class CreateWideStorePricesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('wide_store_prices');
+        $connections = array_unique(array_filter([config('database.default'), config('wide-store.connection')], 'strlen'));
+
+        foreach ($connections as $connection) {
+
+            Schema::connection($connection)->dropIfExists('wide_store_prices');
+        }
     }
 }

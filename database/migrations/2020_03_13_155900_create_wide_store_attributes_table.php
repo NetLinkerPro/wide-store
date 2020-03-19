@@ -15,24 +15,29 @@ class CreateWideStoreAttributesTable extends Migration
     public function up()
     {
 
-        Schema::create('wide_store_attributes', function (Blueprint $table) {
+        $connections = array_unique(array_filter([config('database.default'), config('wide-store.connection')], 'strlen'));
 
-            $table->bigIncrements('id');
-            $table->string('uuid', 36)->index();
-            $table->string('product_uuid', 36)->index();
-            $table->string('deliverer')->index();
-            
-            $table->string('name');
-            $table->text('value');
-            $table->integer('order')->default(20);
+        foreach ($connections as $connection) {
 
-            $table->string('lang')->index();
-            $table->string('type')->index();
-            $table->softDeletes();
-            $table->timestamps();
+            Schema::connection($connection)->create('wide_store_attributes', function (Blueprint $table) {
 
-            $table->unique(['deleted_at','product_uuid','deliverer', 'name', 'lang','type'], 'wsa_product_uuid_deliverer_name_lang_type');
-        });
+                $table->bigIncrements('id');
+                $table->string('uuid', 36)->index();
+                $table->string('product_uuid', 36)->index();
+                $table->string('deliverer')->index();
+
+                $table->string('name');
+                $table->text('value');
+                $table->integer('order')->default(20);
+
+                $table->string('lang')->index();
+                $table->string('type')->index();
+                $table->softDeletes();
+                $table->timestamps();
+
+                $table->unique(['deleted_at', 'product_uuid', 'deliverer', 'name', 'lang', 'type'], 'wsa_product_uuid_deliverer_name_lang_type');
+            });
+        }
     }
 
     /**
@@ -42,6 +47,11 @@ class CreateWideStoreAttributesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('wide_store_attributes');
+        $connections = array_unique(array_filter([config('database.default'), config('wide-store.connection')], 'strlen'));
+
+        foreach ($connections as $connection) {
+
+            Schema::connection($connection)->dropIfExists('wide_store_attributes');
+        }
     }
 }

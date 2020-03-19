@@ -31,7 +31,8 @@
         "imper86/allegroapi": "5.1.9",
         "netlinker/fair-queue": "^1.0",
         "netlinker/lead-allegro": "^1.0",
-        "symfony/dom-crawler": "^5.0"
+        "symfony/dom-crawler": "^5.0",
+        "rap2hpoutre/fast-excel": "^1.7"
     },
     "require-dev": {
         "brainmaestro/composer-git-hooks": "^2.8",

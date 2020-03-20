@@ -25,6 +25,7 @@ class CreateWideStoreCategoriesTable extends Migration
                 $table->string('uuid', 36)->index();
                 $table->string('parent_uuid', 36)->index()->nullable();
                 $table->string('deliverer')->index();
+                $table->string('identifier')->index();
 
                 $table->string('name');
                 $table->string('lang')->index();
@@ -33,7 +34,7 @@ class CreateWideStoreCategoriesTable extends Migration
                 $table->softDeletes();
                 $table->timestamps();
 
-                $table->unique(['deleted_at', 'parent_uuid', 'deliverer', 'name', 'lang', 'type'], 'wsc_parent_uuid_deliverer_name_lang_type');
+                $table->unique(['deleted_at', 'deliverer', 'identifier', 'name', 'lang', 'type'], 'wsc_identifier_deliverer_name_lang_type');
             });
         }
     }

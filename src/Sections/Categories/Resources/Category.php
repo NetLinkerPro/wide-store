@@ -24,6 +24,7 @@ class Category extends JsonResource
             'uuid' => $this->uuid,
             'parent_uuid' => $this->parent_uuid,
             'deliverer' => $this->deliverer,
+            'identifier'=> $this->identifier,
             'parent_category' => $parentCategory,
             'name' => $this->name,
             'lang' => $this->lang,

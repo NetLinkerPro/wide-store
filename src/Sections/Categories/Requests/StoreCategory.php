@@ -26,9 +26,10 @@ class StoreCategory extends FormRequest
     {
         return [
             'parent_uuid' => 'string|max:36',
+            'identifier'=> 'required|string|max:255',
             'deliverer' => 'required|string|max:255',
             'name' => ['required', 'string', 'max:255', Rule::unique('wide_store_categories')->where(function ($query) {
-                return $query->where('parent_uuid', $this->parent_uuid)
+                return $query->where('identifier', $this->identifier)
                     ->where('deliverer', $this->deliverer)
                     ->where('name', $this->name)
                     ->where('lang', $this->lang)

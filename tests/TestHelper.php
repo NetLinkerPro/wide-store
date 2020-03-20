@@ -265,7 +265,8 @@ trait TestHelper
             'AwesIO\SystemNotify\SystemNotifyServiceProvider',
             'AwesIO\Repository\RepositoryServiceProvider',
             'BeyondCode\DumpServer\DumpServerServiceProvider',
-            'Sausin\LaravelOvh\OVHServiceProvider'
+            'Sausin\LaravelOvh\OVHServiceProvider',
+            'Rap2hpoutre\FastExcel\Providers\FastExcelServiceProvider'
         ];
     }
 

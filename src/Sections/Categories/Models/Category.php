@@ -43,7 +43,7 @@ class Category extends Model
      *
      * @var array
      */
-    public $fillable = ['uuid', 'parent_uuid', 'deliverer' , 'name', 'lang', 'type'];
+    public $fillable = ['uuid', 'parent_uuid', 'deliverer' , 'identifier', 'name', 'lang', 'type'];
 
     public $orderable = [];
 

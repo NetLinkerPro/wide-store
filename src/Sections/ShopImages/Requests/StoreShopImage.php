@@ -31,8 +31,8 @@ class StoreShopImage extends FormRequest
         return [
             'shop_uuid' => 'required|string|max:36',
             'product_uuid' => 'required|string|max:36',
-            'deliverer' => 'required|string|max:255',
-            'identifier' => ['required', 'string', 'max:255', Rule::unique('wide_store_shop_images')->where(function ($query) {
+            'deliverer' => 'required|string|max:24',
+            'identifier' => ['required', 'string', 'max:50', Rule::unique('wide_store_shop_images')->where(function ($query) {
                 return $query->where('shop_uuid', $this->shop_uuid)
                     ->where('product_uuid', $this->product_uuid)
                     ->where('deliverer', $this->deliverer)

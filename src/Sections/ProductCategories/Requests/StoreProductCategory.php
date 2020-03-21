@@ -34,7 +34,7 @@ class StoreProductCategory extends FormRequest
                     ->where('type', $this->type)
                     ->whereNull('deleted_at');
             })],
-            'type' => 'required|string|max:255',
+            'type' => 'required|string|max:15',
         ];
     }
 }

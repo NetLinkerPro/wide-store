@@ -24,10 +24,10 @@ class CreateWideStoreNamesTable extends Migration
                 $table->bigIncrements('id');
                 $table->string('uuid', 36)->index();
                 $table->string('product_uuid', 36)->index();
-                $table->string('deliverer')->index();
+                $table->string('deliverer',24)->index();
                 $table->string('name');
-                $table->string('lang')->index();
-                $table->string('type')->index();
+                $table->string('lang', 8)->index();
+                $table->string('type',15)->index();
                 $table->softDeletes();
                 $table->timestamps();
 

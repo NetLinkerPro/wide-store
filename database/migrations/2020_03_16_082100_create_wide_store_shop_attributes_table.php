@@ -22,9 +22,9 @@ class CreateWideStoreShopAttributesTable extends Migration
             $table->string('owner_uuid', 36)->index();
             $table->string('shop_uuid', 36)->index();
             $table->string('product_uuid', 36)->index();
-            $table->string('deliverer')->index();
+            $table->string('deliverer',24)->index();
             
-            $table->string('name');
+            $table->string('name', 50);
             $table->text('value');
             $table->integer('order')->default(20);
 

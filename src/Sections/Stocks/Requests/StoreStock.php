@@ -26,17 +26,17 @@ class StoreStock extends FormRequest
     {
         return [
             'product_uuid' => 'required|string|max:36',
-            'deliverer' => 'required|string|max:255',
+            'deliverer' => 'required|string|max:24',
             'stock' => 'required|integer',
             'availability' => 'required|integer',
-            'department' => ['required', 'string', 'max:128', Rule::unique('wide_store_stocks')->where(function ($query) {
+            'department' => ['required', 'string', 'max:36', Rule::unique('wide_store_stocks')->where(function ($query) {
                 return $query->where('product_uuid', $this->product_uuid)
                     ->where('deliverer', $this->deliverer)
                     ->where('department', $this->department)
                     ->where('type', $this->type)
                     ->whereNull('deleted_at');
             })],
-            'type' => 'required|string|max:255',
+            'type' => 'required|string|max:15',
         ];
     }
 }

@@ -26,8 +26,8 @@ class UpdateCategory extends FormRequest
     {
         return [
             'parent_uuid' => 'string|max:36',
-            'identifier' => 'required|string|max:255',
-            'deliverer' => 'required|string|max:255',
+            'identifier' => 'required|string|max:64',
+            'deliverer' => 'required|string|max:24',
             'name' => ['required', 'string', 'max:255', Rule::unique('wide_store_categories')->where(function ($query) {
                 return $query->where('identifier', $this->identifier)
                     ->where('deliverer', $this->deliverer)
@@ -35,8 +35,8 @@ class UpdateCategory extends FormRequest
                     ->where('type', $this->type)
                     ->whereNull('deleted_at');
             })->ignore($this->id)],
-            'lang' => 'required|string|max:255',
-            'type' => 'required|string|max:255',
+            'lang' => 'required|string|max:8',
+            'type' => 'required|string|max:15',
         ];
     }
 }

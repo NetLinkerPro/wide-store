@@ -24,13 +24,13 @@ class CreateWideStoreCategoriesTable extends Migration
                 $table->bigIncrements('id');
                 $table->string('uuid', 36)->index();
                 $table->string('parent_uuid', 36)->index()->nullable();
-                $table->string('deliverer')->index();
-                $table->string('identifier')->index();
+                $table->string('deliverer',24)->index();
+                $table->string('identifier',64)->index();
 
                 $table->string('name');
-                $table->string('lang')->index();
+                $table->string('lang', 8)->index();
 
-                $table->string('type')->index();
+                $table->string('type',15)->index();
                 $table->softDeletes();
                 $table->timestamps();
 

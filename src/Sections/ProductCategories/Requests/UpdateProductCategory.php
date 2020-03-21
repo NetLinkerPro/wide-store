@@ -34,7 +34,7 @@ class UpdateProductCategory extends FormRequest
                     ->where('type', $this->type)
 ->whereNull('deleted_at');
             })->ignore($this->id)],
-            'type' => 'required|string|max:255',
+            'type' => 'required|string|max:15',
         ];
     }
 }

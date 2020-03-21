@@ -22,9 +22,9 @@ class CreateWideStoreShopCategoriesTable extends Migration
             $table->string('parent_uuid', 36)->index()->nullable();
             $table->string('owner_uuid', 36)->index();
             $table->string('shop_uuid', 36)->index();
-            $table->string('deliverer')->index();
+            $table->string('deliverer',24)->index();
 
-            $table->string('name');
+            $table->string('name', 64);
             $table->softDeletes();
             $table->timestamps();
 

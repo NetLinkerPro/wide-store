@@ -22,13 +22,13 @@ class CreateWideStoreMyStocksTable extends Migration
             $table->string('owner_uuid', 36)->index();
             $table->string('configuration_uuid', 36)->index();
             $table->string('product_uuid', 36)->index();
-            $table->string('deliverer')->index();
+            $table->string('deliverer',24)->index();
 
             $table->integer('stock');
             $table->integer('availability')->index();
-            $table->string('department', 128)->index();
+            $table->string('department', 36)->index();
 
-            $table->string('type')->index();
+            $table->string('type',15)->index();
             $table->softDeletes();
             $table->timestamps();
 

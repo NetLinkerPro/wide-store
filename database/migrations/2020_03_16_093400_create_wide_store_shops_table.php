@@ -21,10 +21,10 @@ class CreateWideStoreShopsTable extends Migration
             $table->string('uuid', 36)->index();
             $table->string('owner_uuid', 36)->index();
 
-            $table->string('deliverer')->index();
+            $table->string('deliverer',24)->index();
             $table->string('formatter_uuid')->index();
 
-            $table->string('name');
+            $table->string('name', 64);
             $table->text('description')->nullable();
 
             $table->softDeletes();

@@ -26,8 +26,8 @@ class StoreImage extends FormRequest
     {
         return [
             'product_uuid' => 'required|string|max:36',
-            'deliverer' => 'required|string|max:255',
-            'identifier' => ['required', 'string', 'max:255', Rule::unique('wide_store_identifiers')->where(function ($query) {
+            'deliverer' => 'required|string|max:24',
+            'identifier' => ['required', 'string', 'max:50', Rule::unique('wide_store_identifiers')->where(function ($query) {
                 return $query->where('product_uuid', $this->product_uuid)
                     ->where('deliverer', $this->deliverer)
                     ->where('identifier', $this->identifier)
@@ -43,8 +43,8 @@ class StoreImage extends FormRequest
             'order' => 'integer',
             'main' => 'boolean',
             'active' => 'boolean',
-            'lang' => 'required|string|max:255',
-            'type' => 'required|string|max:255',
+            'lang' => 'required|string|max:8',
+            'type' => 'required|string|max:15',
         ];
     }
 }

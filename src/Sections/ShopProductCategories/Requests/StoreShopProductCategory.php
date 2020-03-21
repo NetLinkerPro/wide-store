@@ -32,7 +32,7 @@ class StoreShopProductCategory extends FormRequest
             'shop_uuid' => 'required|string|max:36',
             'product_uuid' => 'required|string|max:36',
             'category_uuid' => 'required|string|max:36',
-            'deliverer' => ['required', 'string', 'max:255', Rule::unique('wide_store_shop_product_categories')->where(function ($query) {
+            'deliverer' => ['required', 'string', 'max:24', Rule::unique('wide_store_shop_product_categories')->where(function ($query) {
                 return $query->where('shop_uuid', $this->parent_uuid)
                     ->where('product_uuid', $this->shop_uuid)
                     ->where('category_uuid', $this->deliverer)

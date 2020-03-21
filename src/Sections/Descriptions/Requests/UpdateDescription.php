@@ -26,16 +26,16 @@ class UpdateDescription extends FormRequest
     {
         return [
             'product_uuid' => 'required|string|max:36',
-            'deliverer' => 'required|string|max:255',
+            'deliverer' => 'required|string|max:24',
             'description' => 'required|string',
-            'lang' => ['required', 'string', 'max:255', Rule::unique('wide_store_descriptions')->where(function ($query) {
+            'lang' => ['required', 'string', 'max:8', Rule::unique('wide_store_descriptions')->where(function ($query) {
                 return $query->where('product_uuid', $this->product_uuid)
                     ->where('deliverer', $this->deliverer)
                     ->where('lang', $this->lang)
                     ->where('type', $this->type)
 ->whereNull('deleted_at');
             })->ignore($this->id)],
-            'type' => 'required|string|max:255',
+            'type' => 'required|string|max:15',
         ];
     }
 }

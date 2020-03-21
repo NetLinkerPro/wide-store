@@ -22,9 +22,9 @@ class CreateWideStoreMyPricesTable extends Migration
             $table->string('owner_uuid', 36)->index();
             $table->string('configuration_uuid', 36)->index();
             $table->string('product_uuid', 36)->index();
-            $table->string('deliverer')->index();
-            $table->string('currency', 48)->index();
-            $table->string('type')->index();
+            $table->string('deliverer',24)->index();
+            $table->string('currency', 15)->index();
+            $table->string('type',15)->index();
             $table->decimal('price', 12,5);
             $table->softDeletes();
             $table->timestamps();

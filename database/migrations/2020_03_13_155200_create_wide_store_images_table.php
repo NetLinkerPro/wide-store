@@ -23,9 +23,9 @@ class CreateWideStoreImagesTable extends Migration
 
                 $table->bigIncrements('id');
                 $table->string('uuid', 36)->index();
-                $table->string('deliverer')->index();
+                $table->string('deliverer',24)->index();
                 $table->string('product_uuid', 36)->index();
-                $table->string('identifier')->index();
+                $table->string('identifier',50)->index();
 
                 $table->text('url_source')->nullable();
                 $table->string('path')->nullable();
@@ -35,8 +35,8 @@ class CreateWideStoreImagesTable extends Migration
                 $table->boolean('main')->default(false);
                 $table->boolean('active')->default(true);
 
-                $table->string('lang')->index();
-                $table->string('type')->index();
+                $table->string('lang', 8)->index();
+                $table->string('type',15)->index();
                 $table->softDeletes();
                 $table->timestamps();
 

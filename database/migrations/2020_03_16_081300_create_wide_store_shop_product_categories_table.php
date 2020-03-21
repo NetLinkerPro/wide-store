@@ -18,12 +18,12 @@ class CreateWideStoreShopProductCategoriesTable extends Migration
         Schema::create('wide_store_shop_product_categories', function (Blueprint $table) {
 
             $table->bigIncrements('id');
-            $table->string('argolsan@gmailuuid', 36)->index();
+            $table->string('uuid', 36)->index();
             $table->string('shop_uuid', 36)->index();
             $table->string('owner_uuid', 36)->index();
             $table->string('product_uuid', 36)->index();
             $table->string('category_uuid', 36)->index();
-            $table->string('deliverer')->index();
+            $table->string('deliverer',24)->index();
 
             $table->softDeletes();
             $table->timestamps();

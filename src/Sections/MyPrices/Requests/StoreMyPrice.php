@@ -31,8 +31,8 @@ class StoreMyPrice extends FormRequest
         return [
             'configuration_uuid' => 'required|string|max:36',
             'product_uuid' => 'required|string|max:36',
-            'deliverer' => 'required|string|max:255',
-            'currency' => ['required', 'string', 'max:48', Rule::unique('wide_store_my_prices')->where(function ($query) {
+            'deliverer' => 'required|string|max:24',
+            'currency' => ['required', 'string', 'max:15', Rule::unique('wide_store_my_prices')->where(function ($query) {
                 return $query->where('configuration_uuid', $this->configuration_uuid)
                     ->where('product_uuid', $this->product_uuid)
                     ->where('deliverer', $this->deliverer)
@@ -41,7 +41,7 @@ class StoreMyPrice extends FormRequest
                     ->where('type', $this->type)
                     ->whereNull('deleted_at');
             })],
-            'type' => 'required|string|max:255',
+            'type' => 'required|string|max:15',
             'price' => 'required|regex:/^\d+(\.\d{1,5})?$/',
         ];
     }

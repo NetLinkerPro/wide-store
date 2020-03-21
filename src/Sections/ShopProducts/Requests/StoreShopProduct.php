@@ -31,8 +31,8 @@ class StoreShopProduct extends FormRequest
         return [
             'shop_uuid' => 'required|string|max:36',
             'category_uuid' => 'string|max:36',
-            'deliverer' => 'required|string|max:255',
-            'identifier' => ['required', 'string', 'max:255', Rule::unique('wide_store_shop_products')->where(function ($query) {
+            'deliverer' => 'required|string|max:24',
+            'identifier' => ['required', 'string', 'max:38', Rule::unique('wide_store_shop_products')->where(function ($query) {
                 return $query->where('shop_uuid', $this->shop_uuid)
                     ->where('identifier', $this->identifier)
                     ->where('owner_uuid', $this->getAuthOwnerUuid())

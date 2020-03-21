@@ -20,12 +20,12 @@ class CreateWideStoreSettingsTable extends Migration
             $table->bigIncrements('id');
             $table->string('uuid', 36)->index();
 
-            $table->string('deliverer')->index();
+            $table->string('deliverer',24)->index();
             $table->string('name');
-            $table->string('key')->index();
+            $table->string('key', 64)->index();
             $table->mediumText('value')->nullable();
 
-            $table->unique(['deleted_at','deleted_at','deliverer', 'key'], 'wssettings_deliverer_key');
+            $table->unique(['deleted_at','deliverer', 'key'], 'wssettings_deliverer_key');
 
             $table->softDeletes();
             $table->timestamps();

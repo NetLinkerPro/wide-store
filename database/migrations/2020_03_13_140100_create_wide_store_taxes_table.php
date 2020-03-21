@@ -24,7 +24,7 @@ class CreateWideStoreTaxesTable extends Migration
                 $table->bigIncrements('id');
                 $table->string('uuid', 36)->index();
                 $table->string('product_uuid', 36)->index();
-                $table->string('country', 48)->index();
+                $table->string('country', 36)->index();
                 $table->integer('tax')->index();
                 $table->softDeletes();
                 $table->timestamps();

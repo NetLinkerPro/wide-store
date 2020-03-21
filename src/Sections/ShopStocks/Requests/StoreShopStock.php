@@ -31,11 +31,11 @@ class StoreShopStock extends FormRequest
         return [
             'shop_uuid' => 'required|string|max:36',
             'product_uuid' => 'required|string|max:36',
-            'deliverer' => 'required|string|max:255',
+            'deliverer' => 'required|string|max:24',
             'stock' => 'required|integer',
             'availability' => 'required|integer',
 
-            'department' => ['required', 'string', 'max:128', Rule::unique('wide_store_shop_stocks')->where(function ($query) {
+            'department' => ['required', 'string', 'max:36', Rule::unique('wide_store_shop_stocks')->where(function ($query) {
                 return $query->where('shop_uuid', $this->shop_uuid)
                     ->where('product_uuid', $this->product_uuid)
                     ->where('deliverer', $this->deliverer)

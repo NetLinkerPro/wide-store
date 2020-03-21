@@ -33,6 +33,7 @@ class UpdateProduct extends FormRequest
 ->whereNull('deleted_at');
             })->ignore($this->id)],
             'name' => 'required|string|max:255',
+            'active' => 'nullable|boolean',
         ];
     }
 }

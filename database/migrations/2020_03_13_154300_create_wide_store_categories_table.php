@@ -34,7 +34,7 @@ class CreateWideStoreCategoriesTable extends Migration
                 $table->softDeletes();
                 $table->timestamps();
 
-                $table->unique(['deleted_at', 'deliverer', 'identifier', 'name', 'lang', 'type'], 'wsc_identifier_deliverer_name_lang_type');
+                $table->unique(['deleted_at', 'deliverer', 'identifier', 'lang', 'type'], 'wsc_identifier_deliverer_lang_type');
             });
         }
     }

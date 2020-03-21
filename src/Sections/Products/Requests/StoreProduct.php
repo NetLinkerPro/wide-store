@@ -33,6 +33,7 @@ class StoreProduct extends FormRequest
                     ->whereNull('deleted_at');
             })],
             'name' => 'required|string|max:255',
+            'active' => 'nullable|boolean',
         ];
     }
 }

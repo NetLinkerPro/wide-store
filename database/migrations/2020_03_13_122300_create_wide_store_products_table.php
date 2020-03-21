@@ -27,6 +27,7 @@ class CreateWideStoreProductsTable extends Migration
                 $table->string('category_uuid', 36)->index();
                 $table->string('identifier')->index();
                 $table->string('name');
+                $table->boolean('active')->index()->default(false);
                 $table->softDeletes();
                 $table->timestamps();
 

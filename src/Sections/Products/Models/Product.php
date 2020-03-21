@@ -37,14 +37,16 @@ class Product extends Model
      *
      * @var array
      */
-    protected $casts = [];
+    protected $casts = [
+        'active' => 'boolean',
+    ];
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    public $fillable = ['uuid', 'category_uuid','deliverer' , 'identifier', 'name'];
+    public $fillable = ['uuid', 'category_uuid','deliverer' , 'identifier', 'name', 'active'];
 
     public $orderable = [];
 

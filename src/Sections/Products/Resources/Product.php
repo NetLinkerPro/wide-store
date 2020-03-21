@@ -26,6 +26,7 @@ class Product extends JsonResource
             'deliverer' => $this->deliverer,
             'identifier' => $this->identifier,
             'name' => $this->name,
+            'active' => $this->active,
         ];
     }
 }

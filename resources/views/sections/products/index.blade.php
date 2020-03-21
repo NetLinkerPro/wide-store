@@ -53,6 +53,13 @@
                 @{{ col.data.name }}
             </template>
         </tb-column>
+        <tb-column name="active" label="{{__('wide-store::general.active') }}">
+            <template slot-scope="col">
+                <span v-if="col.data.active">{{__('wide-store::general.yes') }}</span>
+                <span v-else>{{__('wide-store::general.no') }}</span>
+            </template>
+        </tb-column>
+
             <tb-column name="no_field_options" label="{{ __('wide-store::general.options') }}">
                 <template slot-scope="d">
                     <context-menu right boundary="table">
@@ -88,6 +95,7 @@
                 <fb-input name="deliverer" label="{{ __('wide-store::general.deliverer') }}"></fb-input>
                 <fb-input name="identifier" label="{{ __('wide-store::general.identifier') }}"></fb-input>
                 <fb-input name="name" label="{{ __('wide-store::general.name') }}"></fb-input>
+                <fb-switcher name="active" label="{{ __('wide-store::general.active') }}"></fb-switcher>
             </div>
         </form-builder>
     </modal-window>
@@ -102,6 +110,7 @@
             <fb-input name="identifier" label="{{ __('wide-store::general.identifier') }}"></fb-input>
             <fb-input name="deliverer" label="{{ __('wide-store::general.deliverer') }}"></fb-input>
             <fb-input name="name" label="{{ __('wide-store::general.name') }}"></fb-input>
+            <fb-switcher name="active" label="{{ __('wide-store::general.active') }}"></fb-switcher>
         </form-builder>
     </modal-window>
 

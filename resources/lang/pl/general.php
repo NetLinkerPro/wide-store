@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'active' => 'Aktywny',
     'add' => 'dodaj',
     'all'=> 'Wszystkie',
     'apply' => 'Zastosuj',

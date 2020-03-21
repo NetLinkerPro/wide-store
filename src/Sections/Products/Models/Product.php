@@ -39,6 +39,7 @@ class Product extends Model
      */
     protected $casts = [
         'active' => 'boolean',
+        'complete' => 'boolean',
     ];
 
     /**
@@ -46,7 +47,7 @@ class Product extends Model
      *
      * @var array
      */
-    public $fillable = ['uuid', 'category_uuid','deliverer' , 'identifier', 'name', 'active'];
+    public $fillable = ['uuid', 'category_uuid','deliverer' , 'identifier', 'name', 'active', 'complete'];
 
     public $orderable = [];
 

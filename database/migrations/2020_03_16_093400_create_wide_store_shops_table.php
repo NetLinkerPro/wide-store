@@ -30,7 +30,7 @@ class CreateWideStoreShopsTable extends Migration
             $table->softDeletes();
             $table->timestamps();
 
-            $table->unique(['deleted_at','name', 'deliverer', 'formatter_uuid'], 'wsshops_name_deliverer_formatter');
+            $table->unique(['deleted_at','owner_uuid', 'formatter_uuid'], 'wsshops_owner_formatter');
         });
     }
 

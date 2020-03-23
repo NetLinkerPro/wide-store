@@ -3,6 +3,7 @@
 return [
     'addition_product' => 'Dodawanie produktu',
     'are_you_sure_delete_product' => 'Czy na pewno usunąć produkt?',
+    'complete' => 'Kompletny',
     'edition_product' => 'Edycja produktu',
     'manage' => 'Zarządzanie',
     'meta_description' => 'Magazyn produktów',

@@ -44,7 +44,8 @@ class ShopProduct extends Model implements OwnableContract
      */
     protected $casts = [
         'price' => 'float',
-        'tax' => 'integer'
+        'tax' => 'integer',
+        'complete' => 'boolean'
     ];
 
     /**
@@ -52,7 +53,7 @@ class ShopProduct extends Model implements OwnableContract
      *
      * @var array
      */
-    public $fillable = ['uuid', 'owner_uuid','shop_uuid' , 'category_uuid', 'deliverer', 'identifier', 'name', 'price', 'tax', 'url'];
+    public $fillable = ['uuid', 'owner_uuid','shop_uuid' , 'category_uuid', 'deliverer', 'identifier', 'name', 'price', 'tax', 'url', 'complete'];
 
     public $orderable = [];
 

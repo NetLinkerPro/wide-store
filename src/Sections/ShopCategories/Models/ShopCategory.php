@@ -49,7 +49,7 @@ class ShopCategory extends Model implements OwnableContract
      *
      * @var array
      */
-    public $fillable = ['uuid', 'owner_uuid','shop_uuid' , 'parent_uuid', 'deliverer', 'name'];
+    public $fillable = ['uuid', 'owner_uuid','shop_uuid' , 'parent_uuid', 'deliverer','identifier', 'name'];
 
     public $orderable = [];
 

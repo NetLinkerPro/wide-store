@@ -30,6 +30,7 @@ class ShopCategory extends JsonResource
             'parent' => $parent,
             'shop' => $shop,
             'deliverer' => $this->deliverer,
+            'identifier' => $this->identifier,
             'name' => $this->name,
         ];
     }

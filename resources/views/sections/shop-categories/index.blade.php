@@ -50,6 +50,11 @@
                 @{{ col.data.deliverer }}
             </template>
         </tb-column>
+        <tb-column name="identifier" label="{{__('wide-store::general.identifier') }}">
+            <template slot-scope="col">
+                @{{ col.data.identifier }}
+            </template>
+        </tb-column>
         <tb-column name="name" label="{{__('wide-store::general.name') }}">
             <template slot-scope="col">
                 @{{ col.data.name }}
@@ -93,6 +98,7 @@
                            options-value="uuid" options-name="name" :multiple="false" placeholder-text=" "></fb-select>
 
                 <fb-input name="deliverer" label="{{ __('wide-store::general.deliverer') }}"></fb-input>
+                <fb-input name="identifier" label="{{ __('wide-store::general.identifier') }}"></fb-input>
                 <fb-input name="name" label="{{ __('wide-store::general.name') }}"></fb-input>
             </div>
         </form-builder>
@@ -106,6 +112,7 @@
 
             <fb-input type="hidden" name="shop_uuid"></fb-input>
             <fb-input type="hidden" name="parent_uuid"></fb-input>
+            <fb-input name="identifier" label="{{ __('wide-store::general.identifier') }}"></fb-input>
             <fb-input name="deliverer" label="{{ __('wide-store::general.deliverer') }}"></fb-input>
             <fb-input name="name" label="{{ __('wide-store::general.name') }}"></fb-input>
         </form-builder>

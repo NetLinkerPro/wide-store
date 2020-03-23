@@ -21,6 +21,7 @@ class CreateWideStoreShopProductsTable extends Migration
             $table->string('uuid', 36)->index();
             $table->string('owner_uuid', 36)->index();
             $table->string('shop_uuid', 36)->index();
+            $table->string('source_uuid', 36)->index()->nullable();
             $table->string('category_uuid', 36)->index();
             $table->string('deliverer',24)->index();
             $table->string('identifier',38)->index();
@@ -28,6 +29,7 @@ class CreateWideStoreShopProductsTable extends Migration
             $table->decimal('price', 12,5);
             $table->integer('tax')->index();
             $table->string('url')->nullable();
+            $table->boolean('complete')->index()->default(true);
             $table->softDeletes();
             $table->timestamps();
 

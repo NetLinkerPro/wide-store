@@ -31,15 +31,15 @@ class UpdateShopCategory extends FormRequest
             'parent_uuid' => 'string|max:36',
             'shop_uuid' => 'required|string|max:36',
             'deliverer' => 'required|string|max:24',
-
-            'name' => ['required', 'string', 'max:64', Rule::unique('wide_store_shop_categories')->where(function ($query) {
+            'identifier' => ['required', 'string', 'max:64', Rule::unique('wide_store_shop_categories')->where(function ($query) {
                 return $query->where('parent_uuid', $this->parent_uuid)
                     ->where('shop_uuid', $this->shop_uuid)
                     ->where('deliverer', $this->deliverer)
-                    ->where('name', $this->name)
+                    ->where('identifier', $this->identifier)
                     ->where('owner_uuid', $this->getAuthOwnerUuid())
 ->whereNull('deleted_at');
             })->ignore($this->id)],
+            'name' => 'required|string|max:255',
         ];
     }
 }

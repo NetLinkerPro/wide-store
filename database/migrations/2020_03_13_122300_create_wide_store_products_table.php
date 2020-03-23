@@ -28,6 +28,7 @@ class CreateWideStoreProductsTable extends Migration
                 $table->string('identifier',38)->index();
                 $table->string('name');
                 $table->boolean('active')->index()->default(false);
+                $table->boolean('complete')->index()->default(true);
                 $table->softDeletes();
                 $table->timestamps();
 

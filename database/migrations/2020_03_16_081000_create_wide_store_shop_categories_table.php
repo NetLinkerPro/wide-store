@@ -23,12 +23,14 @@ class CreateWideStoreShopCategoriesTable extends Migration
             $table->string('owner_uuid', 36)->index();
             $table->string('shop_uuid', 36)->index();
             $table->string('deliverer',24)->index();
+            $table->string('identifier',64)->index();
 
-            $table->string('name', 64);
+            $table->string('name');
             $table->softDeletes();
             $table->timestamps();
 
-            $table->unique(['deleted_at','parent_uuid', 'shop_uuid', 'deliverer', 'name'], 'wssc_parent_shop_deliverer_name');
+            $table->unique(['deleted_at','parent_uuid', 'shop_uuid', 'deliverer', 'identifier'], 'wssc_parent_shop_deliverer_identifier');
+
         });
     }
 

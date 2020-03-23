@@ -17,7 +17,7 @@ class ShopImage extends Model implements OwnableContract
     protected $ownerPrimaryKey = 'uuid';
     protected $ownerForeignKey = 'owner_uuid';
 
-    protected $withDefaultOwnerOnCreate = true;
+    protected $withDefaultOwnerOnCreate = false;
 
 
     /**

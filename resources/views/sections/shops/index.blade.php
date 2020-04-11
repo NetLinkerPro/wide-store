@@ -96,8 +96,8 @@
                                 + AWES._store.state.forms['add-shop'].fields.deliverer" auto-fetch=""
                                options-value="uuid" options-name="name" :multiple="false" placeholder-text=" "></fb-select>
 
-                    <fb-select name="configuration_uuid" label="{{ __('wide-store::shops.formatter') }}"
-                               :url="'{{route('wide-store.configuration.scope')}}?q=%s&module='
+                    <fb-select name="configuration_uuid" label="{{ __('wide-store::shops.configuration') }}"
+                               :url="'{{route('wide-store.configurations.scope')}}?q=%s&module='
                                 + AWES._store.state.forms['add-shop'].fields.deliverer" auto-fetch=""
                                options-value="uuid" options-name="name" :multiple="false" placeholder-text=" "></fb-select>
 

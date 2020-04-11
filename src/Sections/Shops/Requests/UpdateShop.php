@@ -31,9 +31,11 @@ class UpdateShop extends FormRequest
         return [
             'deliverer' => 'required|string|max:24',
             'formatter_uuid'=> 'required|string|max:36',
+            'configuration_uuid' =>  'nullable|string|max:36',
             'name' => ['required', 'string', 'max:64', Rule::unique('wide_store_shops')->where(function ($query) {
                 return $query->where('formatter_uuid', $this->formatter_uuid)
                     ->where('owner_uuid', $this->getAuthOwnerUuid())
+                    ->where('configuration_uuid', $this->configuration_uuid)
                     ->whereNull('deleted_at');
             })->ignore($this->id)],
             'description' => 'nullable|string',

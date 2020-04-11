@@ -20,6 +20,12 @@ class Deliverer
      */
     public function getClassResource(string $deliverer)
     {
+        $class = sprintf('deliverer-%s.configurations.resource', strtolower($deliverer));
+
+        if ($class){
+            return $class;
+        }
+
         $classResource = sprintf('NetLinker\Deliverer%1$s\Sections\Configurations\Resources\Configuration', Str::ucfirst($deliverer));
 
         if (!class_exists($classResource)){
@@ -51,6 +57,12 @@ class Deliverer
      */
     public function getClassRepository($module)
     {
+        $class = sprintf('deliverer-%s.configurations.repository', strtolower($module));
+
+        if ($class){
+            return $class;
+        }
+
         $classRepository = sprintf('NetLinker\Deliverer%1$s\Sections\Configurations\Repositories\ConfigurationRepository', Str::ucfirst($module));
 
         if (!class_exists($classRepository)){

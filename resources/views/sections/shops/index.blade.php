@@ -40,7 +40,9 @@
         </tb-column>
         <tb-column name="no_field_formatter_uuid" label="{{__('wide-store::shops.formatter') }}">
             <template slot-scope="col">
-                @{{ col.data.formatter.name }}
+                <div v-if="col.data.formatter">
+                    @{{ col.data.formatter.name }}
+                </div>
             </template>
         </tb-column>
         <tb-column name="no_field_configuration" label="{{__('wide-store::shops.configuration') }}">

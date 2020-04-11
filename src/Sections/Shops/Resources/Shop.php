@@ -28,11 +28,11 @@ class Shop extends JsonResource
 
             $resource = $delivererFormatter->getClassResource($this->deliverer);
             $repository = $delivererFormatter->getRepository($this->deliverer);
-            $formatter = $resource::collection($repository->findWhere(['uuid' => $this->formatter_uuid]))[0];
+            $formatter = $resource::collection($repository->findWhere(['uuid' => $this->formatter_uuid]))[0] ?? null;
 
             $resource = $delivererConfiguration->getClassResource($this->deliverer);
             $repository = $delivererConfiguration->getRepository($this->deliverer);
-            $configuration = $resource::collection($repository->findWhere(['uuid' => $this->formatter_uuid]))[0];
+            $configuration = $resource::collection($repository->findWhere(['uuid' => $this->configuration_uuid]))[0] ?? null;
         }
 
         return [

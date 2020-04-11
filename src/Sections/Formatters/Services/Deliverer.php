@@ -20,7 +20,7 @@ class Deliverer
      */
     public function getClassResource(string $deliverer)
     {
-        $class = sprintf('deliverer-%s.formatters.resource', strtolower($deliverer));
+        $class = config(sprintf('deliverer-%s.formatters.resource', strtolower($deliverer)));
 
         if ($class){
             return $class;
@@ -57,7 +57,7 @@ class Deliverer
      */
     public function getClassRepository($module)
     {
-        $class = sprintf('deliverer-%s.formatters.repository', strtolower($module));
+        $class = config(sprintf('deliverer-%s.formatters.repository', strtolower($module)));
 
         if ($class){
             return $class;

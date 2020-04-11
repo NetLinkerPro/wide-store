@@ -43,6 +43,13 @@
                 @{{ col.data.formatter.name }}
             </template>
         </tb-column>
+        <tb-column name="no_field_configuration" label="{{__('wide-store::shops.configuration') }}">
+            <template slot-scope="col">
+                <div v-if="col.data.configuration">
+                    @{{ col.data.configuration.name }}
+                </div>
+            </template>
+        </tb-column>
         <tb-column name="name" label="{{__('wide-store::general.name') }}">
             <template slot-scope="col">
                 @{{ col.data.name }}
@@ -89,6 +96,11 @@
                                 + AWES._store.state.forms['add-shop'].fields.deliverer" auto-fetch=""
                                options-value="uuid" options-name="name" :multiple="false" placeholder-text=" "></fb-select>
 
+                    <fb-select name="configuration_uuid" label="{{ __('wide-store::shops.formatter') }}"
+                               :url="'{{route('wide-store.configuration.scope')}}?q=%s&module='
+                                + AWES._store.state.forms['add-shop'].fields.deliverer" auto-fetch=""
+                               options-value="uuid" options-name="name" :multiple="false" placeholder-text=" "></fb-select>
+
                     <fb-input name="name" label="{{ __('wide-store::general.name') }}"></fb-input>
                     <fb-textarea name="description" label="{{ __('wide-store::general.description') }}"></fb-textarea>
 
@@ -107,6 +119,7 @@
 
             <fb-input type="hidden" name="deliverer"></fb-input>
             <fb-input type="hidden" name="formatter_uuid"></fb-input>
+            <fb-input type="hidden" name="configuration_uuid"></fb-input>
             <fb-input name="name" label="{{ __('wide-store::general.name') }}"></fb-input>
             <fb-textarea name="description" label="{{ __('wide-store::general.description') }}"></fb-textarea>
         </form-builder>

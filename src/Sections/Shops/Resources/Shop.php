@@ -3,6 +3,7 @@
 namespace NetLinker\WideStore\Sections\Shops\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Str;
 use NetLinker\WideStore\Sections\Formatters\Services\Deliverer;
 
 class Shop extends JsonResource
@@ -18,10 +19,14 @@ class Shop extends JsonResource
 
         $deliverer = new Deliverer();
 
-        $resource = $deliverer->getClassResource($this->deliverer);
-        $repository = $deliverer->getRepository($this->deliverer);
+        $formatter = null;
 
-        $formatter = $resource::collection($repository->findWhere(['uuid' => $this->formatter_uuid]))[0];
+        if (!Str::startsWith($this->deliverer, 'custom')){
+            $resource = $deliverer->getClassResource($this->deliverer);
+            $repository = $deliverer->getRepository($this->deliverer);
+
+            $formatter = $resource::collection($repository->findWhere(['uuid' => $this->formatter_uuid]))[0];
+        }
 
         return [
             'id' => $this->id,

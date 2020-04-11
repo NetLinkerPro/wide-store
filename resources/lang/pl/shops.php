@@ -3,6 +3,8 @@
 return [
     'addition_shop' => 'Dodawanie magazynu',
     'are_you_sure_delete_shop' => 'Czy na pewno usunąć magazyn?',
+    'configuration' => 'Konfiguracja',
+    'configuration_uuid' => 'Identyfikator konfiguracji',
     'edition_shop' => 'Edycja magazynu',
     'formatter' => 'Formatowanie',
     'shop_list' => 'Lista magazynów',

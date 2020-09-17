@@ -226,6 +226,7 @@ Route::domain(config('wide-store.domain'))
         Route::prefix('shops')->as('shops.')->group(function () {
             Route::get('/', config('wide-store.controllers.shops') . '@index')->name('index');
             Route::get('scope', config('wide-store.controllers.shops') . '@scope')->name('scope');
+            Route::get('search', config('wide-store.controllers.shops') . '@search')->name('search');
             Route::post('store', config('wide-store.controllers.shops') . '@store')->name('store');
             Route::patch('{id?}', config('wide-store.controllers.shops') . '@update')->name('update');
             Route::delete('{id?}', config('wide-store.controllers.shops') . '@destroy')->name('destroy');

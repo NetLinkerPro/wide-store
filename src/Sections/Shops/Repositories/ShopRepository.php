@@ -10,6 +10,7 @@ use NetLinker\WideStore\Sections\Shops\Scopes\ShopScopes;
 class ShopRepository extends BaseRepository
 {
     protected $searchable = [
+        'name' => 'like',
         'deliverer' => 'like',
     ];
 

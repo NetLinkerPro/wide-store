@@ -30,7 +30,6 @@
         "illuminate/support": "~5",
         "imper86/allegroapi": "5.1.9",
         "netlinker/fair-queue": "^1.0",
-        "netlinker/lead-allegro": "^1.0",
         "symfony/dom-crawler": "^5.0",
         "sausin/laravel-ovh": "^3.2",
         "intervention/image": "^2.5",
@@ -62,11 +61,6 @@
             "name": "netlinker/fair-queue",
             "type": "vcs",
             "url": "git@github.com:NetLinkerPro/fair-queue.git"
-        },
-        {
-            "name": "netlinker/lead-allegro",
-            "type": "vcs",
-            "url": "git@github.com:NetLinkerPro/lead-allegro.git"
         }
     ],
     "autoload": {

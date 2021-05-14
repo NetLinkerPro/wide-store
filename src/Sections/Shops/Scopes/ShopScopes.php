@@ -6,5 +6,7 @@ use AwesIO\Repository\Scopes\ScopesAbstract;
 
 class ShopScopes extends ScopesAbstract
 {
-    protected $scopes = [];
+    protected $scopes = [
+        'q' =>SearchScope::class,
+    ];
 }

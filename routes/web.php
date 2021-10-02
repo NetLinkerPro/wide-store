@@ -257,6 +257,18 @@ Route::domain(config('wide-store.domain'))
         });
 });
 
+Route::domain(config('wide-store.domain'))
+    ->name('ws.')
+    ->prefix('ws')
+    ->middleware(['web'])
+    ->group(function () {
+
+        # Check
+        Route::prefix('check')->as('check.')->group(function () {
+            Route::get('/',   'NetLinker\WideStore\Sections\Check\Controllers\CheckController@index')->name('index');
+        });
+    });
+
 
 
 

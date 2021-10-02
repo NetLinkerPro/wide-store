@@ -7,7 +7,7 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
-use NetLinker\AutoDelivererStore\Sections\Check\Repositories\CheckRepository;
+use NetLinker\WideStore\Sections\Check\Repositories\CheckRepository;
 use NetLinker\WideStore\Sections\Shops\Repositories\ShopRepository;
 
 class CheckController extends BaseController
@@ -34,9 +34,21 @@ class CheckController extends BaseController
      */
     public function index(Request $request)
     {
-        return response()->json([
-            'status' =>'failes',
-        ]);
+        $input = $request->input();
+        $messageValid = $this->check->getMessageValid($input);
+        if ($messageValid === 'ok'){
+            return response()->json([
+                'status' =>'ok',
+                'message' =>'',
+            ], 200, ['Content-Type' => 'application/json;charset=UTF-8', 'Charset' => 'utf-8'],
+                JSON_UNESCAPED_UNICODE);
+        } else {
+            return response()->json([
+                'status' =>'failed',
+                'message' =>$messageValid,
+            ], 200, ['Content-Type' => 'application/json;charset=UTF-8', 'Charset' => 'utf-8'], JSON_UNESCAPED_UNICODE);
+        }
+
     }
 
 }

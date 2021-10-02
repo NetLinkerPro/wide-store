@@ -33,7 +33,7 @@ class CheckRepository
 
             $productFirst = ShopProduct::where('shop_uuid', $shop->uuid)->orderBy('updated_at', 'DESC')->first();
             $updatedAtFirst =  $productFirst->updated_at;
-            if (!$updatedAtFirst){
+            if ($updatedAtFirst){
                 $message .= sprintf('Data najnowszej aktualizacji: %s.', $updatedAtFirst->format('Y-m-d H:i:s'));
             }
             return $message;

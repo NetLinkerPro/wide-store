@@ -29,7 +29,14 @@ class CheckRepository
         $dateToCompare = now();
         $dateToCompare->subHours($subHours);
         if ($dateToCompare->greaterThan($updatedAt)){
-            return sprintf('Przestarzała data aktualizacji: %s.', $updatedAt->format('Y-m-d H:i:s'));
+            $message = sprintf('Przestarzała data aktualizacji: %s.', $updatedAt->format('Y-m-d H:i:s'));
+
+            $productFirst = ShopProduct::where('shop_uuid', $shop->uuid)->orderBy('updated_at', 'DESC')->first();
+            $updatedAtFirst =  $productFirst->updated_at;
+            if (!$updatedAtFirst){
+                $message .= sprintf('Data najnowszej aktualizacji: %s.', $updatedAtFirst->format('Y-m-d H:i:s'));
+            }
+            return $message;
         }
         return 'ok';
     }

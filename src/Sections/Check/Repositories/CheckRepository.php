@@ -6,6 +6,7 @@ namespace NetLinker\WideStore\Sections\Check\Repositories;
 use Carbon\Carbon;
 use NetLinker\WideStore\Sections\ShopProducts\Models\ShopProduct;
 use NetLinker\WideStore\Sections\Shops\Models\Shop;
+use NetLinker\WideStore\Sections\ShopStocks\Models\ShopStock;
 
 class CheckRepository
 {
@@ -17,22 +18,21 @@ class CheckRepository
         if (!$shop){
             return 'Sklep nie istnieje.';
         }
-        $productLast = ShopProduct::where('shop_uuid', $shop->uuid)->orderBy('updated_at')->first();
-        if (!$productLast){
-            return 'Brak produktów w integracji.';
+        $stockLast = ShopStock::where('shop_uuid', $shop->uuid)->orderBy('updated_at')->first();
+        if (!$stockLast){
+            return 'Brak stanów w integracji.';
         }
         /** @var Carbon $updatedAt */
-        $updatedAt = $productLast->updated_at;
+        $updatedAt = $stockLast->updated_at;
         if (!$updatedAt){
-            return 'Brak aktualizacji w produkcie.';
+            return 'Brak aktualizacji stanów.';
         }
         $dateToCompare = now();
         $dateToCompare->subHours($subHours);
         if ($dateToCompare->greaterThan($updatedAt)){
             $message = sprintf('Przestarzała data aktualizacji: %s.', $updatedAt->format('Y-m-d H:i:s'));
-
-            $productFirst = ShopProduct::where('shop_uuid', $shop->uuid)->orderBy('updated_at', 'DESC')->first();
-            $updatedAtFirst =  $productFirst->updated_at;
+            $stockFirst = ShopStock::where('shop_uuid', $shop->uuid)->orderBy('updated_at', 'DESC')->first();
+            $updatedAtFirst =  $stockFirst->updated_at;
             if ($updatedAtFirst){
                 $message .= sprintf(' Data najnowszej aktualizacji: %s.', $updatedAtFirst->format('Y-m-d H:i:s'));
             }

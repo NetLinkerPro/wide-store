@@ -2,11 +2,14 @@
 
 namespace NetLinker\WideStore\Sections\ShopProducts\Controllers;
 
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\View\View;
 use NetLinker\FairQueue\Sections\Accesses\Requests\StoreAccess;
 use NetLinker\WideStore\Sections\ShopProducts\Repositories\ShopProductRepository;
 use NetLinker\WideStore\Sections\ShopProducts\Requests\StoreShopProduct;
@@ -35,7 +38,7 @@ class ShopProductController extends BaseController
      * Request index
      *
      * @param Request $request
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function index(Request $request)
     {
@@ -48,7 +51,7 @@ class ShopProductController extends BaseController
      * Request scope
      *
      * @param Request $request
-     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     * @return AnonymousResourceCollection
      */
     public function scope(Request $request)
     {

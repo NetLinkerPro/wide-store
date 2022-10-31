@@ -19,7 +19,6 @@ class ShopImage extends Model implements OwnableContract
 
     protected $withDefaultOwnerOnCreate = false;
 
-
     /**
      * Get owner model name.
      *
@@ -69,6 +68,7 @@ class ShopImage extends Model implements OwnableContract
 
         static::creating(function ($model) {
             $model->uuid = Uuid::uuid4()->toString();
+            static::urlTargetSafe($model);
         });
 
         static::saving(function ($model) {
@@ -76,7 +76,17 @@ class ShopImage extends Model implements OwnableContract
             if ($original_uuid !== $model->uuid) {
                 $model->uuid = $original_uuid;
             }
+            static::urlTargetSafe($model);
         });
+
+        static::updating(function ($model) {
+            static::urlTargetSafe($model);
+        });
+    }
+
+    public static function urlTargetSafe($model)
+    {
+        $model->url_target = str_replace('https://storage.waw.cloud.ovh.net', env('APP_URL'), $model->url_target);
     }
 
     /**

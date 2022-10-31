@@ -65,6 +65,7 @@ class Image extends Model
 
         static::creating(function ($model) {
             $model->uuid = Uuid::uuid4()->toString();
+            static::urlTargetSafe($model);
         });
 
         static::saving(function ($model) {
@@ -72,7 +73,17 @@ class Image extends Model
             if ($original_uuid !== $model->uuid) {
                 $model->uuid = $original_uuid;
             }
+            static::urlTargetSafe($model);
         });
+
+        static::updating(function ($model) {
+            static::urlTargetSafe($model);
+        });
+    }
+
+    public static function urlTargetSafe($model)
+    {
+        $model->url_target = str_replace('https://storage.waw.cloud.ovh.net', env('APP_URL'), $model->url_target);
     }
 
     /**

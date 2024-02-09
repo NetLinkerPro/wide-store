@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 use Ramsey\Uuid\Uuid;
 
-class CreateDelivererKrampFormattersTable extends Migration
+class AddTypeWideStoreShopProductsTable extends Migration
 {
     /**
      * Run the migrations.
